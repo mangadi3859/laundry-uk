@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,700&display=swap");
+@import url("../lib/fontawesome/css/all.min.css");
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* Color styles */
+    --text: rgba(5, 3, 21, 1);
+    --background: rgba(251, 251, 254, 1);
+    --accent: rgba(47, 60, 126, 1);
+    --neutral-base: rgb(208, 210, 221);
+    --neutral-400: rgba(240, 240, 245, 1);
+    --neutral-600: rgba(199, 202, 215, 1);
+    --primary-base: rgba(16, 24, 32, 1);
+    --primary-600: rgba(13, 19, 26, 1);
+    --primary-700: rgba(10, 14, 19, 1);
+    --primary-800: rgba(6, 10, 13, 1);
+    --primary-400: rgba(23, 34, 46, 1);
+    --primary-300: rgba(30, 44, 59, 1);
+    --primary-200: rgba(36, 55, 73, 1);
+    --primary-100: rgba(112, 116, 121, 1);
+    --primary-50: rgba(136, 140, 144, 1);
+    --accent-base: #ff9d4c;
+    --accent-600: #d3813d;
+    --accent-700: #a7652e;
+    --accent-800: #7b481e;
+    --accent-400: #ffb170;
+    --accent-300: #ffc494;
+    --accent-200: #ffd8b7;
+    --accent-150: #ffe2c9;
+    --accent-100: #ffebdb;
+    --accent-50: #fff5ed;
+
+    /* Text-size styles */
+    /* base size: type--md (16px) */
+    --type-xs: 0.62rem;
+    --type-sm: 0.81rem;
+    --type-md: 1rem;
+    --type-lg: 1.25rem;
+    --type-xl: 1.56rem;
+    --type-hero-sm: 1.94rem;
+    --type-hero-md: 2.44rem;
+    --type-hero-lg: 3.06rem;
+    --type-hero-xl: 3.81rem;
+
+    --sidebar-width: 12rem;
+    --max-width: 70rem;
+    --gap: 2rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+    position: relative;
+    background-color: var(--accent-50);
+    display: flex;
+    /* gap: var(--gap); */
+    height: 100dvh;
+    overflow: hidden;
+}
+
+#main {
+    display: flex;
+    flex-direction: flex;
+    max-width: min(var(--max-width), 100dvw);
+    flex-grow: 1;
+    margin-inline: var(--gap);
+    min-height: 100dvh;
+    overflow-y: auto;
+    background-color: rgb(0 0 0 / 0.1);
+}
+
+p,
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-primary {
+    border: 0;
+    color: white;
+    padding: 0.65em 1em;
+    border-radius: 0.25em;
+    font-size: var(--type-md);
+    background-color: var(--primary-400);
+    transition: 0.3s ease;
+}
+
+.btn-primary:where(:hover, :focus) {
+    background-color: var(--primary-base);
+}
+
+a,
+.link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.brand {
+    color: var(--primary-base);
+    font-weight: bolder;
+}
+
+.brand > strong {
+    color: var(--accent-base);
+}

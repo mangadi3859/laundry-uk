@@ -1,3 +1,6 @@
 <?php
+$_SAFE = true;
+require_once "functions.php";
 
-echo $_SERVER['REMOTE_ADDR'];
+session_destroy();
+echo password_hash("kmzwa8awaa", PASSWORD_BCRYPT);

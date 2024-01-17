@@ -50,7 +50,7 @@ class Auth
             $sql = "SELECT * FROM auth WHERE token = '$token'";
             $data = query($sql);
 
-            $userSql = "SELECT * FROM tb_user WHERE id = '{$data[0]['id']}'";
+            $userSql = "SELECT * FROM tb_user WHERE id = '{$data[0]['id_user']}'";
             $user = query($userSql);
 
             if (!empty($data) && !empty($user)) {
@@ -58,6 +58,9 @@ class Auth
                 $this->user = $user[0];
 
                 setcookie(self::$KEY, $token, time() + $EXPIRES, "/");
+                $this->token = $token;
+                $this->user = $user[0];
+                return;
             }
         }
 
@@ -75,7 +78,7 @@ class Auth
         $this->user = $userData[0];
         setcookie(self::$KEY, $hashToken, time() + $EXPIRES, "/");
 
-        logger("LOGIN", "Someone logged in as ({$userData[0]['username']})");
+        logger("LOGIN", "Someone logged in as ({$userData[0]['nama']})");
     }
 
     public static function generateToken(int $length = 24): string
@@ -101,7 +104,7 @@ class Auth
         }
 
         session_destroy();
-        $logActor = $this->user["username"];
+        $logActor = $this->user["nama"];
         logger("LOGOUT", "Someone logged out from ($logActor)");
     }
 

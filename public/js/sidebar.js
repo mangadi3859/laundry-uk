@@ -4,12 +4,13 @@ logoutButton.addEventListener("click", async (e) => {
     let logout = await Swal.fire({
         icon: "warning",
         title: "Logout",
-        text: "Are you sure want to Logout?",
+        text: "Konfirmasi untuk logout",
         showCancelButton: true,
         showCloseButton: true,
         confirmButtonText: "Logout",
-        cancelButtonText: "Cancel",
+        cancelButtonText: "Batal",
         focusConfirm: false,
+        focusCancel: false,
     });
 
     if (logout.isConfirmed) {

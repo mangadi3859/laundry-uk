@@ -15,3 +15,10 @@ class DashboardTab
     public static $STATUS = "status";
     public static $KARYAWAN = "karyawan";
 }
+
+class Privilege
+{
+    public static $KASIR = "kasir";
+    public static $ADMIN = "admin";
+    public static $OWNER = "owner";
+}

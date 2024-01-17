@@ -3,10 +3,10 @@
     background-color: white;
     padding-block: 1rem;
     height: 100dvh;
-    /* position: fixed; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.1);
 }
 
 #sidebar > * {
@@ -16,8 +16,10 @@
 .side-brand {
     display: grid;
     place-items: center;
-    font-size: 1.2rem;
+    font-size: var(--type-lg);
     padding-bottom: 1rem;
+    font-weight: bold;
+    padding-top: 1rem;
     border-bottom: 1px solid #aaa;
 }
 
@@ -56,4 +58,8 @@
 .logout a {
     background-color: var(--primary-300);
     color: white;
+}
+
+.logout a:is(:hover, :focus) {
+    background-color: var(--primary-200);
 }

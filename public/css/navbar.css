@@ -1,0 +1,32 @@
+#nav {
+    width: 100%;
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content;
+    border-radius: 0.25rem;
+    box-shadow: 0rem 0.25rem 1rem 0 rgb(0 0 0 / 0.1);
+}
+
+.user {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#nav .tab {
+    font-weight: bold;
+    font-size: var(--type-lg);
+}
+
+.user .avatar {
+    background-color: var(--accent-base);
+    width: 2rem;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    border-radius: 100vmax;
+}

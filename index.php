@@ -8,5 +8,4 @@ if (!Auth::isAuthenticated()) {
 }
 
 header("Location: dashboard");
-?>
 

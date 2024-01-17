@@ -52,8 +52,8 @@
     --type-hero-xl: 3.81rem;
 
     --sidebar-width: 12rem;
-    --max-width: 70rem;
-    --gap: 2rem;
+    --max-width: 80rem;
+    --gap: 1rem;
 }
 
 body {
@@ -64,19 +64,24 @@ body {
     background-color: var(--accent-50);
     display: flex;
     /* gap: var(--gap); */
+    max-height: 100dvh;
     height: 100dvh;
-    overflow: hidden;
+    overflow-y: hidden;
+}
+
+.main-container {
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 #main {
     display: flex;
-    flex-direction: flex;
-    max-width: min(var(--max-width), 100dvw);
-    flex-grow: 1;
-    margin-inline: var(--gap);
+    flex-direction: column;
+    gap: var(--gap);
+    max-width: min(var(--max-width), 100%);
+    margin-inline: auto;
     min-height: 100dvh;
-    overflow-y: auto;
-    background-color: rgb(0 0 0 / 0.1);
+    padding: 1rem 2rem var(--gap);
 }
 
 p,
@@ -112,4 +117,16 @@ a,
 
 .brand > strong {
     color: var(--accent-base);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.accent {
+    color: var(--accent-base);
+}
+
+.capitalize {
+    text-transform: capitalize;
 }

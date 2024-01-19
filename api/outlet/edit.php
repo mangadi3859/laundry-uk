@@ -19,7 +19,7 @@ if (!Auth::isAuthenticated()) {
     ]));
 }
 
-if (!isPermited([Privilege::$ADMIN, Privilege::$KASIR])) {
+if (!isPermited([Privilege::$ADMIN])) {
     http_response_code(403);
     exit(json_encode([
         "message" => "Forbidden"
@@ -30,37 +30,29 @@ $payload = json_decode(file_get_contents("php://input"), true);
 $id = $payload["id"] ?? NULL;
 $nama = $payload["nama"] ?? NULL;
 $alamat = $payload["alamat"] ?? NULL;
-$gender = $payload["gender"] ?? NULL;
 $nohp = $payload["nohp"] ?? NULL;
 
-if (!@$id || !@$nama || !@$alamat || !@$gender || !@$nohp) {
+if (!@$id || !@$nama || !@$alamat || !@$nohp) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
     ]));
 }
 
-$sql = "SELECT id FROM tb_member WHERE id = '$id'";
+$sql = "SELECT id FROM tb_outlet WHERE id = '$id'";
 $outlet = query($sql);
 
 if (empty($outlet)) {
     exit(json_encode([
         "status" => "failed",
-        "message" => "Member tidak ditemukan"
+        "message" => "Outlet tidak ditemukan"
     ]));
 }
 
-if (!in_array($gender, ["L", "P"])) {
-    exit(json_encode([
-        "status" => "failed",
-        "message" => "Gender tidak valid"
-    ]));
-}
-
-$sql = "UPDATE tb_member SET nama = '$nama', alamat = '$alamat', jenis_kelamin = '$gender', tlp = '$nohp' WHERE id = '$id'";
+$sql = "UPDATE tb_outlet SET nama = '$nama', alamat = '$alamat', tlp = '$nohp' WHERE id = '$id'";
 query($sql);
 
-logger("UPDATE MEMBER", "({$_SESSION['auth']->user['nama']}) mengubah data id_member($id)");
+logger("UPDATE OUTLET", "({$_SESSION['auth']->user['nama']}) mengubah data id_outlet($id)");
 exit(json_encode([
     "status" => "ok",
 ]));

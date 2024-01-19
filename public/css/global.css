@@ -52,7 +52,7 @@
     --type-hero-xl: 3.81rem;
 
     --sidebar-width: 12rem;
-    --max-width: 80rem;
+    --max-width: 90rem;
     --gap: 1rem;
 }
 
@@ -194,6 +194,7 @@ table tbody tr:nth-of-type(odd) {
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     color: white;
+    font-size: var(--type-sm);
     transition: 0.3s ease;
 }
 

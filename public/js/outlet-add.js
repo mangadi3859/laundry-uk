@@ -1,30 +1,17 @@
 const form = document.querySelector("#form");
-const id = document.querySelector("#i-id");
 const nama = document.querySelector("#i-nama");
 const alamat = document.querySelector("#i-alamat");
-const gender = document.querySelector("#i-gender");
 const nohp = document.querySelector("#i-nohp");
 
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    let confirm = await DangerConfirm.fire({
-        icon: "warning",
-        title: "Konfirmasi perubahan data",
-        confirmButtonText: "Simpan",
-        html: `Data member akan diubah`,
-    });
-
-    if (!confirm.isConfirmed) return;
-
     let res = await (
-        await fetch("../../api/member/edit.php", {
+        await fetch("../../api/outlet/add.php", {
             method: "POST",
             body: JSON.stringify({
-                id: id.value,
                 nama: nama.value,
                 alamat: alamat.value,
-                gender: gender.value,
                 nohp: nohp.value,
             }),
             headers: {
@@ -45,7 +32,7 @@ form?.addEventListener("submit", async (e) => {
 
     await Swal.fire({
         title: "Selesai",
-        text: "Data diubah",
+        text: "Data ditambah",
         icon: "success",
         timer: 2000,
         showCloseButton: true,

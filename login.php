@@ -26,7 +26,7 @@ if (Auth::isAuthenticated()) {
 <body>
     <main id="main">
         <div class="login-container">
-            <div class="banner"></div>
+            <div class="login-banner"></div>
             <form action="api/login.php" method="POST" id="loginForm">
                 <div class="head">
                     <p>Login</p>

@@ -72,6 +72,8 @@ body {
 .main-container {
     flex-grow: 1;
     overflow-y: auto;
+    position: relative;
+    isolation: isolate;
 }
 
 #main {
@@ -96,7 +98,7 @@ h1 {
     padding: 0.65em 1em;
     border-radius: 0.25em;
     font-size: var(--type-md);
-    background-color: var(--primary-400);
+    background-color: var(--primary-300);
     transition: 0.3s ease;
 }
 
@@ -105,9 +107,12 @@ h1 {
 }
 
 a,
+button,
 .link {
     text-decoration: none;
     cursor: pointer;
+    outline: 0;
+    border: 0;
 }
 
 .brand {
@@ -129,4 +134,123 @@ a,
 
 .capitalize {
     text-transform: capitalize;
+}
+
+.table-container {
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 0.25rem;
+    /* border: 1px solid rgb(0 0 0 / 0.5); */
+    overflow-x: auto;
+    /* overflow-y: clip; */
+}
+
+.table-container table {
+    border-collapse: collapse;
+    min-width: 100%;
+}
+
+th,
+td,
+tr {
+    border-collapse: collapse;
+    border: 1px solid rgb(0 0 0 / 0.5);
+}
+
+th,
+td {
+    padding: 0.5rem;
+}
+
+td:first-child {
+    text-align: center;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color: var(--neutral-400);
+}
+
+.optional::after {
+    content: "(?)";
+    margin-left: 0.5rem;
+    /* position: absolute;
+    right: 0;
+    top: 0; */
+    color: var(--accent-600);
+}
+
+.tb-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    gap: 1rem;
+    position: relative;
+}
+
+.action-btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* .action-btn:is(:focus, :hover) {
+} */
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:is(:hover, :focus) {
+    background-color: hsl(354, 70%, 40%);
+}
+
+.popover {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    box-shadow: 0 0 2rem 0 rgb(0 0 0 / 0.3);
+    border-radius: 0.25rem;
+    bottom: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    right: 100%;
+}
+
+.hide {
+    display: none !important;
+}
+
+[data-action-popover] {
+    position: relative;
+}
+
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 13rem;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: -1;
+    filter: brightness(0.5);
+    overflow: hidden;
+}
+
+.action-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.input[readonly] {
+    cursor: not-allowed;
+    color: #ccc;
 }

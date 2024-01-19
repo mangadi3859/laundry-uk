@@ -4,6 +4,10 @@ require_once "../conn.php";
 require_once "../functions.php";
 require_once "../config.php";
 
+if (!Auth::isAuthenticated()) {
+    exit(header("Location: ../login.php"));
+}
+
 $userOutlet = query("SELECT nama, id FROM tb_outlet WHERE id = {$_SESSION["auth"]->user["id_outlet"]}");
 $laundrySql = "SELECT 
 SUM(CASE WHEN tb_transaksi.status = 'proses' THEN 1 ELSE 0 END) AS proses,
@@ -45,7 +49,7 @@ $isOwner = $user["role"] == Privilege::$OWNER;
     <div class="main-container">
         <main id="main">
             <?php include "../components/navbar.php" ?>
-            <div class="banner">
+            <div class="dashboard-banner">
                 <p>Selamat datang <strong class="accent capitalize"><?= $_SESSION["auth"]->user["nama"] ?></strong>!</p>
                 <p>Kamu adalah <strong class="accent capitalize"><?= $_SESSION["auth"]->user["role"] ?></strong>!</p>
             </div>

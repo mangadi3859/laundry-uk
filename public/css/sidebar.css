@@ -48,6 +48,11 @@
 
 .sidebar-item a > i:last-child {
     margin-left: auto;
+    transition: 0.2s ease;
+}
+
+.sidebar-item a:is(:hover, .active) > i:last-child {
+    transform: rotate(180deg);
 }
 
 .sidebar-item a:is(:hover, .active) {

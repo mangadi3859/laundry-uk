@@ -1,4 +1,4 @@
-.banner {
+.dashboard-banner {
     width: 100%;
     padding: var(--gap);
     font-size: var(--type-hero-md);
@@ -15,7 +15,7 @@
     position: relative;
 }
 
-.banner::after {
+.dashboard-banner::after {
     position: absolute;
     inset: 0;
     content: "";

@@ -1,46 +1,11 @@
-[2024/01/14 04:01 PM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/14 04:01 PM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 08:36 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 09:40 AM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 09:40 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 10:19 AM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 10:22 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 10:48 AM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 10:48 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 11:03 AM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 11:03 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 11:03 AM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 11:03 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 11:32 AM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 11:32 AM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 01:19 PM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 01:19 PM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 05:23 PM] [LOGOUT]: Someone logged out from (totallynotisla)
-[2024/01/16 05:24 PM] [LOGIN]: Someone logged in as (adidi)
-[2024/01/16 05:27 PM] [LOGOUT]: Someone logged out from (adidi)
-[2024/01/16 05:27 PM] [LOGIN]: Someone logged in as (rihan123)
-[2024/01/16 05:27 PM] [LOGOUT]: Someone logged out from (rihan123)
-[2024/01/16 05:27 PM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 10:09 PM] [LOGOUT]: Someone logged out from ()
-[2024/01/16 10:09 PM] [LOGIN]: Someone logged in as (totallynotisla)
-[2024/01/16 11:06 PM] [LOGOUT]: Someone logged out from ()
-[2024/01/16 11:07 PM] [LOGIN]: Someone logged in as (adidi)
-[2024/01/16 11:08 PM] [LOGOUT]: Someone logged out from (Komang Adi Wirawan)
-[2024/01/16 11:09 PM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
-[2024/01/17 07:25 AM] [LOGIN]: Someone logged in as (Isla)
-[2024/01/17 07:47 AM] [SQL ERROR]: Operand should contain 1 column(s)
-[2024/01/17 07:47 AM] [SQL QUERY]: SELECT (nama, id) FROM tb_outlet WHERE id = 1
-[2024/01/18 06:35 AM] [LOGOUT]: Someone logged out from (Isla)
-[2024/01/18 06:35 AM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
-[2024/01/18 06:36 AM] [UPDATE]: Rihan Sirmawan just changed password
-[2024/01/18 06:36 AM] [LOGOUT]: Someone logged out from (Rihan Sirmawan)
-[2024/01/18 06:36 AM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
-[2024/01/18 06:37 AM] [UPDATE]: Rihan Sirmawan just changed password
-[2024/01/18 06:37 AM] [LOGOUT]: Someone logged out from (Rihan Sirmawan)
-[2024/01/18 06:37 AM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
-[2024/01/18 06:41 AM] [LOGOUT]: Someone logged out from (Rihan Sirmawan)
-[2024/01/18 06:41 AM] [LOGIN]: Someone logged in as (Isla)
-[2024/01/18 06:41 AM] [LOGOUT]: Someone logged out from (Isla)
-[2024/01/18 06:41 AM] [LOGIN]: Someone logged in as (Komang Adi Wirawan)
-[2024/01/18 06:42 AM] [UPDATE]: (Komang Adi Wirawan) just changed password
-[2024/01/18 06:42 AM] [LOGOUT]: Someone logged out from (Komang Adi Wirawan)
+[2024/01/19 05:31 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '6266666666'  WHERE...' at line 1
+[2024/01/19 05:31 PM] [SQL QUERY]: UPDATE tb_member SET nama = 'James', SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '6266666666'  WHERE id = '1'
+[2024/01/19 05:31 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '62666666666'  WHER...' at line 1
+[2024/01/19 05:31 PM] [SQL QUERY]: UPDATE tb_member SET nama = 'James', SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '62666666666'  WHERE id = '1'
+[2024/01/19 05:35 PM] [SQL ERROR]: Unknown column 'telp' in 'field list'
+[2024/01/19 05:35 PM] [SQL QUERY]: UPDATE tb_member SET nama = 'James', alamat = 'Jl Melati', jenis_kelamin = 'L', telp = '62666666666' WHERE id = '1'
+[2024/01/19 05:35 PM] [UPDATE MEMBER]: (Isla) mengubah data id_member(1)
+[2024/01/19 05:37 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/19 05:38 PM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
+[2024/01/19 05:42 PM] [LOGOUT]: Someone logged out from (Rihan Sirmawan)
+[2024/01/19 05:42 PM] [LOGIN]: Someone logged in as (Isla)

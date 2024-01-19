@@ -42,3 +42,8 @@ function permitAccess(array $roles, string $redirect)
         exit(header("Location: $redirect"));
 
 }
+
+function isPermited(array $roles): bool
+{
+    return in_array($_SESSION["auth"]->user["role"], $roles);
+}

@@ -22,3 +22,11 @@ class Privilege
     public static $ADMIN = "admin";
     public static $OWNER = "owner";
 }
+
+class Gender
+{
+    public static $L = "L";
+    public static $P = "P";
+}
+
+// DEFAULT PASS (default_pas) = $2y$10$jra2FItAFyz2.BYDigZWBusR6Vz.iqetX/.1BG9AK.xiylgOfcp8W

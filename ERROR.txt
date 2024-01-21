@@ -1,0 +1,20 @@
+[2024/01/20 08:55 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM 
+tb_paket
+LEFT JOIN tb_detail_transaksi ON tb_detail_transaksi.id_pake...' at line 6
+
+[2024/01/20 08:55 PM] [SQL QUERY]: SELECT 
+CASE 
+    WHEN tb_detail_transaksi.id IS NOT NULL THEN 1
+    ELSE 0
+END AS is_used,
+FROM 
+tb_paket
+LEFT JOIN tb_detail_transaksi ON tb_detail_transaksi.id_paket = tb_paket.id
+GROUP BY 
+tb_paket.id
+
+[2024/01/21 09:38 AM] [SQL ERROR]: Unknown column 'tb_aoutlet.id' in 'field list'
+
+[2024/01/21 09:38 AM] [SQL QUERY]: SELECT tb_user.id AS id, tb_user.nama AS nama, tb_user.username AS username, tb_user.email AS email, tb_aoutlet.id AS outlet, tb_user.role AS `role`, tb_outlet.id AS id_outlet FROM tb_user
+JOIN tb_outlet ON tb_outlet.id = tb_user.id_outlet
+

@@ -51,7 +51,7 @@ try {
 
     query("DELETE FROM tb_member WHERE id = '$id';");
     $conn->commit();
-    logger("DELETE MEMBER", "({$_SESSION['auth']->user['nama']}) menghapus member_id($id)");
+    logger("DELETE MEMBER", "({$_SESSION['auth']->user['nama']}) just deleted a record with the id ($id)");
     exit(json_encode([
         "status" => "ok",
     ]));

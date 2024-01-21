@@ -4,7 +4,7 @@ resetBtn.addEventListener("click", async () => {
     let res = await Swal.fire({
         title: "Masukan password kamu",
         text: "Masukan password kamu yang sekarang",
-        icon: "warning",
+        icon: "question",
         input: "password",
         // inputLabel: "Password",
         showCloseButton: true,

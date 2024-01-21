@@ -23,6 +23,16 @@ function logger(string $name, string $message): void
     $datetime = date("Y/m/d h:i A");
     file_put_contents($LOGGER_PATH, $currentLog . "[$datetime] [$name]: $message\n");
 }
+function logError(string $name, string $message): void
+{
+    global $ERROR_LOG_PATH;
+    $currentLog = "";
+    if (file_exists($ERROR_LOG_PATH))
+        $currentLog = file_get_contents($ERROR_LOG_PATH);
+
+    $datetime = date("Y/m/d h:i A");
+    file_put_contents($ERROR_LOG_PATH, $currentLog . "[$datetime] [$name]: $message\n\n");
+}
 
 function getInitial(string $name): string
 {

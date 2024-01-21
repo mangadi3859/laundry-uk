@@ -60,7 +60,7 @@ if (!empty($outlet) && $outlet[0]["is_used"] != 0) {
 
 $sql = "DELETE FROM tb_outlet WHERE id = '$id'";
 query($sql);
-logger("DELETE OUTLET", "({$_SESSION['auth']->user['nama']}) menghapus outlet_id($id)");
+logger("DELETE OUTLET", "({$_SESSION['auth']->user['nama']}) just deleted a record with the id ($id)");
 
 exit(json_encode([
     "status" => "ok",

@@ -20,8 +20,9 @@ function query(string $query): array
     // $res->
 
     if ($conn->error) {
-        logger("SQL ERROR", $conn->error);
-        logger("SQL QUERY", $query);
+        logger("SQL ERROR", "An error has occur, see ERROR LOG to see the detail");
+        logError("SQL ERROR", $conn->error);
+        logError("SQL QUERY", $query);
         throw new Exception($conn->error);
     }
 

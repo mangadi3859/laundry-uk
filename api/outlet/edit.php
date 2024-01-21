@@ -52,7 +52,7 @@ if (empty($outlet)) {
 $sql = "UPDATE tb_outlet SET nama = '$nama', alamat = '$alamat', tlp = '$nohp' WHERE id = '$id'";
 query($sql);
 
-logger("UPDATE OUTLET", "({$_SESSION['auth']->user['nama']}) mengubah data id_outlet($id)");
+logger("UPDATE OUTLET", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");
 exit(json_encode([
     "status" => "ok",
 ]));

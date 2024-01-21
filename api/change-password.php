@@ -33,7 +33,7 @@ $hash = password_hash($password, PASSWORD_BCRYPT);
 $sql = "UPDATE tb_user SET password = '$hash' WHERE id = '{$_SESSION["auth"]->user["id"]}';";
 
 query($sql);
-logger("UPDATE", "({$_SESSION["auth"]->user["nama"]}) just changed password");
+logger("UPDATE", "({$_SESSION["auth"]->user["nama"]}) just changed their password");
 
 exit(json_encode([
     "status" => "ok",

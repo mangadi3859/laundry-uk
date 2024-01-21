@@ -60,7 +60,7 @@ if (!in_array($gender, ["L", "P"])) {
 $sql = "UPDATE tb_member SET nama = '$nama', alamat = '$alamat', jenis_kelamin = '$gender', tlp = '$nohp' WHERE id = '$id'";
 query($sql);
 
-logger("UPDATE MEMBER", "({$_SESSION['auth']->user['nama']}) mengubah data id_member($id)");
+logger("UPDATE MEMBER", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");
 exit(json_encode([
     "status" => "ok",
 ]));

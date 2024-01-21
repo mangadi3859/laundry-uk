@@ -20,7 +20,7 @@ if (!@$id) {
 $outlet = query("SELECT id, nama, alamat, tlp FROM tb_outlet WHERE id = '$id'");
 
 if (empty($outlet)) {
-    exit(header("Location: ../"));
+    exit(header("Location: ./"));
 }
 
 $outlet = $outlet[0];

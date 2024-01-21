@@ -16,7 +16,7 @@ if (!@$id) {
     exit(header("Location: ./"));
 }
 
-$sql = "SELECT * FROM tb_member";
+$sql = "SELECT * FROM tb_member WHERE id = '$id'";
 $data = query($sql);
 
 if (empty($data)) {

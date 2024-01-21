@@ -1,45 +1,8 @@
-[2024/01/19 05:31 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '6266666666'  WHERE...' at line 1
-[2024/01/19 05:31 PM] [SQL QUERY]: UPDATE tb_member SET nama = 'James', SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '6266666666'  WHERE id = '1'
-[2024/01/19 05:31 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '62666666666'  WHER...' at line 1
-[2024/01/19 05:31 PM] [SQL QUERY]: UPDATE tb_member SET nama = 'James', SET alamat = 'Jl Melati', SET jenis_kelamin = 'L', telp = '62666666666'  WHERE id = '1'
-[2024/01/19 05:35 PM] [SQL ERROR]: Unknown column 'telp' in 'field list'
-[2024/01/19 05:35 PM] [SQL QUERY]: UPDATE tb_member SET nama = 'James', alamat = 'Jl Melati', jenis_kelamin = 'L', telp = '62666666666' WHERE id = '1'
-[2024/01/19 05:35 PM] [UPDATE MEMBER]: (Isla) mengubah data id_member(1)
-[2024/01/19 05:37 PM] [LOGOUT]: Someone logged out from (Isla)
-[2024/01/19 05:38 PM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
-[2024/01/19 05:42 PM] [LOGOUT]: Someone logged out from (Rihan Sirmawan)
-[2024/01/19 05:42 PM] [LOGIN]: Someone logged in as (Isla)
-[2024/01/19 06:09 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CASE 
-    WHEN tb_user.id NOT NULL OR tb_transaksi.id NOT NULL OR tb_paket.i...' at line 2
-[2024/01/19 06:09 PM] [SQL QUERY]: SELECT tb_outlet.id AS id, tb_outlet.nama AS nama, tb_outlet.alamat AS alamat, tb_outlet.tlp AS tlp 
-CASE 
-    WHEN tb_user.id NOT NULL OR tb_transaksi.id NOT NULL OR tb_paket.id THEN 1
-    ELSE THEN 0
-END
-FROM tb_outlet
-LEFT JOIN tb_user ON tb_user.id_outlet = tb_outlet.id
-LEFT JOIN tb_transaksi ON tb_transaksi.id_outlet = tb_outlet.id
-LEFT JOIN tb_paket ON tb_paket.id_outlet = tb_outlet.id
-GROUP BY (tb_outlet.id)
-ORDER BY id ASC;
-[2024/01/19 06:36 PM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'LEFT JOIN tb_user ON tb_user.id_outlet = tb_outlet.id
-LEFT JOIN tb_transaksi...' at line 9
-[2024/01/19 06:36 PM] [SQL QUERY]: SELECT 
-CASE 
-    WHEN tb_user.id IS NOT NULL OR tb_transaksi.id IS NOT NULL OR tb_paket.id IS NOT NULL THEN 1
-    ELSE 0
-END AS is_used
-FROM 
-tb_outlet
-WHERE id = '2'
-LEFT JOIN tb_user ON tb_user.id_outlet = tb_outlet.id
-LEFT JOIN tb_transaksi ON tb_transaksi.id_outlet = tb_outlet.id
-LEFT JOIN tb_paket ON tb_paket.id_outlet = tb_outlet.id
-GROUP BY 
-tb_outlet.id
-ORDER BY 
-id ASC;
-[2024/01/19 06:38 PM] [DELETE OUTLET]: (Isla) menghapus outlet_id(2)
-[2024/01/19 06:48 PM] [INSERT OUTLET]: (Isla) menambahkan data outlet
-[2024/01/19 06:49 PM] [INSERT OUTLET]: (Isla) menambahkan data outlet
-[2024/01/19 07:11 PM] [UPDATE OUTLET]: (Isla) mengubah data id_outlet(4)
+[2024/01/20 08:54 PM] [INSERT PAKET]: (Isla) just created a new record
+[2024/01/20 08:55 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/20 08:56 PM] [DELETE PAKET]: (Isla) just deleted a record with the id (22)
+[2024/01/20 08:58 PM] [DELETE PAKET]: (Isla) just deleted a record with the id (22)
+[2024/01/20 08:58 PM] [UPDATE paket]: (Isla) just modified a record with id (1)
+[2024/01/20 08:58 PM] [UPDATE paket]: (Isla) just modified a record with id (1)
+[2024/01/21 09:26 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/21 09:38 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail

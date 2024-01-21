@@ -50,7 +50,7 @@ $token = Auth::generateToken(10);
 $sql = "INSERT INTO tb_member VALUE ('', '$nama', '$alamat', '$gender', '$nohp', '$token')";
 query($sql);
 
-logger("INSERT MEMBER", "({$_SESSION['auth']->user['nama']}) menambahkan data member");
+logger("INSERT MEMBER", "({$_SESSION['auth']->user['nama']}) just created a new record");
 exit(json_encode([
     "status" => "ok",
 ]));

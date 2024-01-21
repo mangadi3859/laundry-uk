@@ -6,3 +6,22 @@
 [2024/01/20 08:58 PM] [UPDATE paket]: (Isla) just modified a record with id (1)
 [2024/01/21 09:26 AM] [LOGIN]: Someone logged in as (Isla)
 [2024/01/21 09:38 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/21 12:16 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/21 12:16 PM] [LOGIN]: Someone logged in as (Rihan Sirmawan)
+[2024/01/21 12:17 PM] [LOGOUT]: Someone logged out from (Rihan Sirmawan)
+[2024/01/21 12:17 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/21 01:16 PM] [INSERT USER]: (Isla) just created a new record
+[2024/01/21 01:18 PM] [INSERT USER]: (Isla) just created a new record
+[2024/01/21 01:19 PM] [INSERT USER]: (Isla) just created a new record
+[2024/01/21 01:20 PM] [INSERT USER]: (Isla) just created a new record
+[2024/01/21 02:55 PM] [UPDATE USER]: (Isla) just modified a record with id (6)
+[2024/01/21 02:56 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/21 03:01 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/21 03:05 PM] [UPDATE USER]: (Isla) just modified a record with id (4)
+[2024/01/21 03:05 PM] [UPDATE USER]: (Isla) just modified a record with id (5)
+[2024/01/21 03:05 PM] [UPDATE USER]: (Isla) just modified a record with id (6)
+[2024/01/21 03:05 PM] [UPDATE USER]: (Isla) just modified a record with id (7)
+[2024/01/21 03:05 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/21 03:06 PM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/01/21 03:06 PM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/01/21 03:06 PM] [LOGIN]: Someone logged in as (Isla)

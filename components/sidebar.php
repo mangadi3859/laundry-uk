@@ -5,10 +5,10 @@ require_once dirname(__FILE__) . "/../config.php";
 
 internalOnly();
 
-$user = $_SESSION["auth"]->user;
-$isAdmin = $user["role"] == Privilege::$ADMIN;
-$isKasir = $user["role"] == Privilege::$KASIR;
-$isOwner = $user["role"] == Privilege::$OWNER;
+$_user = $_SESSION["auth"]->user;
+$isAdmin = $_user["role"] == Privilege::$ADMIN;
+$isKasir = $_user["role"] == Privilege::$KASIR;
+$isOwner = $_user["role"] == Privilege::$OWNER;
 ?>
 
 <link rel="stylesheet" href="<?= $ROOT_PATH ?>/public/css/sidebar.css">

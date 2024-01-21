@@ -1,4 +1,5 @@
 const form = document.querySelector("#form");
+const id = document.querySelector("#i-id");
 const nama = document.querySelector("#i-nama");
 const username = document.querySelector("#i-username");
 const email = document.querySelector("#i-email");
@@ -9,7 +10,7 @@ const role = document.querySelector("#i-role");
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (role.value == "admin") {
+    if (role.dataset.value != "admin" && role.value == "admin") {
         let confirm = await DangerConfirm.fire({
             title: "Role khusus",
             html: `User ini akan memiliki role <strong class="accent">${role.value}</strong>`,
@@ -20,10 +21,20 @@ form?.addEventListener("submit", async (e) => {
         if (!confirm.isConfirmed) return;
     }
 
+    let confirm = await DangerConfirm.fire({
+        icon: "warning",
+        title: "Konfirmasi perubahan data",
+        confirmButtonText: "Simpan",
+        html: `Data user akan diubah`,
+    });
+
+    if (!confirm.isConfirmed) return;
+
     let res = await (
-        await fetch("../../api/karyawan/add.php", {
+        await fetch("../../api/karyawan/edit.php", {
             method: "POST",
             body: JSON.stringify({
+                id: id.value,
                 nama: nama.value,
                 username: username.value,
                 email: email.value,
@@ -49,7 +60,7 @@ form?.addEventListener("submit", async (e) => {
 
     await Swal.fire({
         title: "Selesai",
-        text: "Data ditambah",
+        text: "Data diubah",
         icon: "success",
         timer: 2000,
         showCloseButton: true,

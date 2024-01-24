@@ -5,7 +5,7 @@ require_once "../../functions.php";
 require_once "../../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 permitAccess([Privilege::$ADMIN], "../");
@@ -17,13 +17,13 @@ if (!@$id) {
     exit(header("Location: ./"));
 }
 
-$outlet = query("SELECT id, nama, alamat, tlp FROM tb_outlet WHERE id = '$id'");
+$idOutlet = query("SELECT id, nama, alamat, tlp FROM tb_outlet WHERE id = '$id'");
 
-if (empty($outlet)) {
+if (empty($idOutlet)) {
     exit(header("Location: ./"));
 }
 
-$outlet = $outlet[0];
+$idOutlet = $idOutlet[0];
 
 ?>
 <!DOCTYPE html>
@@ -55,22 +55,22 @@ $outlet = $outlet[0];
                 <div class="form-content">
                     <div class="input-group">
                         <label for="i-nama" class="label">ID (Read Only)</label>
-                        <input value="<?= $outlet["id"] ?>" readonly name="id" id="i-id" class="input" type="text" placeholder="ID Outlet" required />
+                        <input value="<?= $idOutlet["id"] ?>" readonly name="id" id="i-id" class="input" type="text" placeholder="ID Outlet" required />
                     </div>
 
                     <div class="input-group">
                         <label for="i-nama" class="label">Nama Outlet</label>
-                        <input value="<?= $outlet["nama"] ?>" name="name" id="i-nama" class="input" type="text" placeholder="Nama Outlet" required />
+                        <input value="<?= $idOutlet["nama"] ?>" name="name" id="i-nama" class="input" type="text" placeholder="Nama Outlet" required />
                     </div>
 
                     <div class="input-group">
                         <label for="i-alamat" class="label">Alamat</label>
-                        <input value="<?= $outlet["alamat"] ?>" name="alamat" id="i-alamat" class="input" type="text" placeholder="Alamat Outlet" required />
+                        <input value="<?= $idOutlet["alamat"] ?>" name="alamat" id="i-alamat" class="input" type="text" placeholder="Alamat Outlet" required />
                     </div>
                     
                     <div class="input-group">
                         <label for="i-nohp" class="label">Nomer Komunikasi</label>
-                        <input value="<?= $outlet["tlp"] ?>" name="nohp" id="i-nohp" class="input" type="text" data-number-only pattern="62\d{7,13}" placeholder="(62)" required />
+                        <input value="<?= $idOutlet["tlp"] ?>" name="nohp" id="i-nohp" class="input" type="text" data-number-only pattern="62\d{7,13}" placeholder="(62)" required />
                     </div>
                 </div>
 

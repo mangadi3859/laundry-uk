@@ -5,7 +5,7 @@ require_once "../../functions.php";
 require_once "../../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 permitAccess([Privilege::$ADMIN], "../");
@@ -34,7 +34,7 @@ tb_paket.id ASC;";
 $paket = query($sql);
 
 $sql = "SELECT id, nama FROM tb_outlet";
-$outlet = query($sql);
+$idOutlet = query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,7 @@ $outlet = query($sql);
                 <select name="outlet" id="i-outlet" class="input input-action" data-filter-outlet>
                     <option value="">--- Pilih outlet ---</option>
                     <?php
-                    foreach ($outlet as $option) {
+                    foreach ($idOutlet as $option) {
                         echo "<option value='{$option['id']}'>{$option['nama']}</option>";
                     }
                     ?>

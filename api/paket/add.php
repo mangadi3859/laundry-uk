@@ -29,10 +29,10 @@ if (!isPermited([Privilege::$ADMIN])) {
 $payload = json_decode(file_get_contents("php://input"), true);
 $nama = $payload["nama"] ?? NULL;
 $jenis = $payload["jenis"] ?? NULL;
-$outlet = $payload["outlet"] ?? NULL;
+$idOutlet = $payload["outlet"] ?? NULL;
 $harga = $payload["harga"] ?? NULL;
 
-if (!@$nama || !@$jenis || !@$outlet || !@$harga) {
+if (!@$nama || !@$jenis || !@$idOutlet || !@$harga) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
@@ -61,7 +61,7 @@ if ($harga < 1000) {
     ]));
 }
 
-$sql = "SELECT id FROM tb_outlet WHERE id = '$outlet'";
+$sql = "SELECT id FROM tb_outlet WHERE id = '$idOutlet'";
 $outletData = query($sql);
 
 if (empty($outletData)) {
@@ -71,7 +71,7 @@ if (empty($outletData)) {
     ]));
 }
 
-$sql = "INSERT INTO tb_paket VALUE ('', '$outlet', '$jenis', '$nama', '$harga')";
+$sql = "INSERT INTO tb_paket VALUE ('', '$idOutlet', '$jenis', '$nama', '$harga')";
 query($sql);
 
 logger("INSERT PAKET", "({$_SESSION['auth']->user['nama']}) just created a new record");

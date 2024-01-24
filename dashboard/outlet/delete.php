@@ -49,9 +49,9 @@ WHERE tb_outlet.id = '$id'
 GROUP BY 
 tb_outlet.id;";
 
-$outlet = query($sql);
+$idOutlet = query($sql);
 
-if (!empty($outlet) && $outlet[0]["is_used"] != 0) {
+if (!empty($idOutlet) && $idOutlet[0]["is_used"] != 0) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Outlet tidak bisa dihapus karena outlet ini sudah digunakan oleh tabel lainya"

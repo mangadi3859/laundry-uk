@@ -106,6 +106,20 @@ h1 {
     background-color: var(--primary-base);
 }
 
+.btn-accent {
+    border: 0;
+    color: white;
+    padding: 0.65em 1em;
+    border-radius: 0.25em;
+    font-size: var(--type-md);
+    background-color: var(--accent-base);
+    transition: 0.3s ease;
+}
+
+.btn-accent:is(:hover, :focus) {
+    background-color: var(--accent-600);
+}
+
 a,
 button,
 .link {
@@ -150,6 +164,7 @@ button,
 .table-container table {
     border-collapse: collapse;
     min-width: 100%;
+    width: max-content;
 }
 
 th,
@@ -162,6 +177,8 @@ tr {
 th,
 td {
     padding: 0.5rem;
+    width: max-content;
+    max-width: 20rem;
 }
 
 td:first-child {
@@ -183,10 +200,12 @@ table tbody tr:nth-of-type(odd) {
 
 .tb-action {
     display: flex;
+    width: 100%;
+    margin-block: auto;
     justify-content: center;
     align-items: center;
     border: 0;
-    gap: 1rem;
+    gap: 0.25rem;
     position: relative;
 }
 

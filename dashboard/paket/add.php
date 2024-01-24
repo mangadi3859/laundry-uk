@@ -5,14 +5,14 @@ require_once "../../functions.php";
 require_once "../../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 permitAccess([Privilege::$ADMIN], "../");
 $_DASHBOARD = DashboardTab::$PAKET;
 
 $sql = "SELECT id, nama FROM tb_outlet;";
-$outlet = query($sql);
+$idOutlet = query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ $outlet = query($sql);
                         <select name="outlet" id="i-outlet" class="input" required>
                         <option value="">--- Belum dipilih ---</option>
                         <?php
-                        foreach ($outlet as $option) {
+                        foreach ($idOutlet as $option) {
                             echo "<option value='{$option['id']}'>{$option['nama']}</option>";
                         }
                         ?>

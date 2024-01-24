@@ -1,9 +1,8 @@
 <?php
-$_SAFE = true;
-require_once "../../conn.php";
-require_once "../../functions.php";
-require_once "../../config.php";
 
+$_SAFE = true;
+require_once "../conn.php";
+require_once "../functions.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     http_response_code(405);
@@ -19,7 +18,7 @@ if (!Auth::isAuthenticated()) {
     ]));
 }
 
-if (!isPermited([Privilege::$ADMIN])) {
+if (!isPermited([Privilege::$ADMIN, Privilege::$KASIR])) {
     http_response_code(403);
     exit(json_encode([
         "message" => "Forbidden"
@@ -28,31 +27,26 @@ if (!isPermited([Privilege::$ADMIN])) {
 
 $payload = json_decode(file_get_contents("php://input"), true);
 $id = $payload["id"] ?? NULL;
-$nama = $payload["nama"] ?? NULL;
-$alamat = $payload["alamat"] ?? NULL;
-$nohp = $payload["nohp"] ?? NULL;
+$idOutlet = $payload["outlet"] ?? NULL;
 
-if (!@$id || !@$nama || !@$alamat || !@$nohp) {
+if (!@$id || !@$idOutlet) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
     ]));
 }
 
-$sql = "SELECT id FROM tb_outlet WHERE id = '$id'";
-$idOutlet = query($sql);
+$sql = "SELECT * FROM tb_paket WHERE id = '$id' AND id_outlet = '$idOutlet'";
+$paket = query($sql);
 
-if (empty($idOutlet)) {
+if (empty($paket)) {
     exit(json_encode([
         "status" => "failed",
-        "message" => "Outlet tidak ditemukan"
+        "message" => "Data paket tidak ditemukan"
     ]));
 }
 
-$sql = "UPDATE tb_outlet SET nama = '$nama', alamat = '$alamat', tlp = '$nohp' WHERE id = '$id'";
-query($sql);
-
-logger("UPDATE OUTLET", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");
 exit(json_encode([
     "status" => "ok",
+    "data" => $paket[0]
 ]));

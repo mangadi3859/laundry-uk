@@ -32,9 +32,9 @@ $username = $payload["username"] ?? NULL;
 $email = $payload["email"] ?? NULL;
 $password = @$payload["password"] ? $payload["password"] : $DEFAULT_PW;
 $role = $payload["role"] ?? NULL;
-$outlet = $payload["outlet"] ?? NULL;
+$idOutlet = $payload["outlet"] ?? NULL;
 
-if (!@$nama || !@$username || !@$email || !@$password || !@$role || !@$outlet) {
+if (!@$nama || !@$username || !@$email || !@$password || !@$role || !@$idOutlet) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
@@ -70,7 +70,7 @@ if ($user[0]["email"]) {
     ]));
 }
 
-$sql = "SELECT id FROM tb_outlet WHERE id = '$outlet'";
+$sql = "SELECT id FROM tb_outlet WHERE id = '$idOutlet'";
 $outletData = query($sql);
 
 if (empty($outletData)) {
@@ -82,7 +82,7 @@ if (empty($outletData)) {
 
 
 $hash = password_hash($password, PASSWORD_BCRYPT);
-$sql = "INSERT INTO tb_user VALUE ('', '$email', '$nama', '$username', '$hash', '$outlet', '$role')";
+$sql = "INSERT INTO tb_user VALUE ('', '$email', '$nama', '$username', '$hash', '$idOutlet', '$role')";
 
 query($sql);
 

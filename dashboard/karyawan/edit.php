@@ -5,7 +5,7 @@ require_once "../../functions.php";
 require_once "../../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 permitAccess([Privilege::$ADMIN], "../");
@@ -27,7 +27,7 @@ if (empty($user)) {
 
 $user = $user[0];
 $sql = "SELECT id, nama FROM tb_outlet;";
-$outlet = query($sql);
+$idOutlet = query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +55,7 @@ $outlet = query($sql);
         <main id="main">
             <?php include "../../components/navbar.php" ?>
             <form id="form" >
-                <div class="head">Form User</div>
+                <div class="head">Edit Data User</div>
                 <div class="form-content">
                     <div class="input-group">
                         <label for="i-id" class="label">ID (Read Only)</label>
@@ -87,7 +87,7 @@ $outlet = query($sql);
                         <select data-value="<?= $user["id_outlet"] ?>" name="outlet" id="i-outlet" class="input" required>
                         <option value="">--- Belum dipilih ---</option>
                         <?php
-                        foreach ($outlet as $option) {
+                        foreach ($idOutlet as $option) {
                             echo "<option value='{$option['id']}'>{$option['nama']}</option>";
                         }
                         ?>

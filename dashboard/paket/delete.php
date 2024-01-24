@@ -46,9 +46,9 @@ LEFT JOIN tb_detail_transaksi ON tb_detail_transaksi.id_paket = tb_paket.id
 GROUP BY 
 tb_paket.id";
 
-$outlet = query($sql);
+$idOutlet = query($sql);
 
-if (!empty($outlet) && $outlet[0]["is_used"] != 0) {
+if (!empty($idOutlet) && $idOutlet[0]["is_used"] != 0) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Paket tidak bisa dihapus karena paket ini sudah digunakan oleh tabel lainya"

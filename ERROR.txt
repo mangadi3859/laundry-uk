@@ -18,3 +18,136 @@ tb_paket.id
 [2024/01/21 09:38 AM] [SQL QUERY]: SELECT tb_user.id AS id, tb_user.nama AS nama, tb_user.username AS username, tb_user.email AS email, tb_aoutlet.id AS outlet, tb_user.role AS `role`, tb_outlet.id AS id_outlet FROM tb_user
 JOIN tb_outlet ON tb_outlet.id = tb_user.id_outlet
 
+[2024/01/22 08:17 AM] [SQL ERROR]: Unknown column 'tb_transaksi.invoice' in 'field list'
+
+[2024/01/22 08:17 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, tb_transaksi.invoice AS invoice FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 08:21 AM] [SQL ERROR]: Unknown column 'tb_transaksi.invoice' in 'field list'
+
+[2024/01/22 08:21 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, tb_transaksi.invoice AS invoice FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 08:36 AM] [SQL ERROR]: Unknown column 'tb_transaksi.invoice' in 'field list'
+
+[2024/01/22 08:36 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, tb_transaksi.invoice AS invoice FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 08:51 AM] [SQL ERROR]: Unknown column 'tb_transaksi.pembayaran' in 'field list'
+
+[2024/01/22 08:51 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+tb_transaksi.kode_invoice AS invoice, 
+tb_outlet.nama AS outlet, 
+tb_member.nama AS member, 
+tb_transaksi.tgl AS tgl, 
+tb_transaksi.batas_waktu AS batas_waktu,
+tb_transaksi.tgl_bayar AS tgl_bayar,
+tb_transaksi.status AS status,
+tb_transaksi.pembayaran AS pembayaran
+FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 09:03 AM] [SQL ERROR]: Unknown column 'tb_transaksi.pembayaran' in 'field list'
+
+[2024/01/22 09:03 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+tb_transaksi.kode_invoice AS invoice, 
+tb_outlet.nama AS outlet, 
+tb_member.nama AS member, 
+tb_transaksi.tgl AS tgl, 
+tb_transaksi.batas_waktu AS batas_waktu,
+tb_transaksi.tgl_bayar AS tgl_bayar,
+tb_transaksi.status AS status,
+tb_transaksi.pembayaran AS pembayaran
+FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 09:03 AM] [SQL ERROR]: Unknown column 'tb_transaksi.id_oulet' in 'on clause'
+
+[2024/01/22 09:03 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+tb_transaksi.kode_invoice AS invoice, 
+tb_outlet.nama AS outlet, 
+tb_member.nama AS member, 
+tb_transaksi.tgl AS tgl, 
+tb_transaksi.batas_waktu AS batas_waktu,
+tb_transaksi.tgl_bayar AS tgl_bayar,
+tb_transaksi.status AS status,
+tb_transaksi.dibayar AS dibayar
+FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 09:03 AM] [SQL ERROR]: Unknown column 'tb_transaksi.id_oulet' in 'on clause'
+
+[2024/01/22 09:03 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+tb_transaksi.kode_invoice AS invoice, 
+tb_outlet.nama AS outlet, 
+tb_member.nama AS member, 
+tb_transaksi.tgl AS tgl, 
+tb_transaksi.batas_waktu AS batas_waktu,
+tb_transaksi.tgl_bayar AS tgl_bayar,
+tb_transaksi.status AS status,
+tb_transaksi.dibayar AS dibayar
+FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_oulet
+
+
+[2024/01/22 09:06 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tb_transaksi.id_outlet AS id_outlet,
+tb_transaksi.id_member AS id_member,
+F...' at line 10
+
+[2024/01/22 09:06 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+tb_transaksi.kode_invoice AS invoice, 
+tb_outlet.nama AS outlet, 
+tb_member.nama AS member, 
+tb_transaksi.tgl AS tgl, 
+tb_transaksi.batas_waktu AS batas_waktu,
+tb_transaksi.tgl_bayar AS tgl_bayar,
+tb_transaksi.status AS status,
+tb_transaksi.dibayar AS dibayar
+tb_transaksi.id_outlet AS id_outlet,
+tb_transaksi.id_member AS id_member,
+FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
+
+
+[2024/01/22 06:34 PM] [SQL ERROR]: Unknown column 'tb_member.name' in 'field list'
+
+[2024/01/22 06:34 PM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+tb_transaksi.kode_invoice AS invoice, 
+tb_outlet.nama AS outlet, 
+tb_member.nama AS member, 
+tb_transaksi.tgl AS tgl, 
+tb_transaksi.batas_waktu AS batas_waktu,
+tb_transaksi.tgl_bayar AS tgl_bayar,
+tb_transaksi.status AS status,
+tb_transaksi.dibayar AS dibayar,
+tb_member.name AS member_name,
+tb_transaksi.id_outlet AS id_outlet,
+tb_transaksi.id_member AS id_member
+FROM tb_transaksi
+JOIN tb_user ON tb_user.id = tb_transaksi.id_user
+JOIN tb_member ON tb_member.id = tb_transaksi.id_member
+JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
+
+

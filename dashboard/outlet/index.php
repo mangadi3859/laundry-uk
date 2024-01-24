@@ -5,7 +5,7 @@ require_once "../../functions.php";
 require_once "../../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 permitAccess([Privilege::$ADMIN], "../");
@@ -30,7 +30,7 @@ tb_outlet.id
 ORDER BY 
 tb_outlet.id ASC;";
 
-$outlet = query($sql);
+$idOutlet = query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +71,7 @@ $outlet = query($sql);
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($outlet as $k => $row) {
+                            foreach ($idOutlet as $k => $row) {
                                 $isUsed = array_pop($row);
                                 $delBtn = $isUsed ? "" : "<a data-action-delete='{$row['id']}' data-member='{$row["nama"]}' title='HAPUS DATA' class='action-btn btn-danger'>DELETE</a>";
                                 echo "<tr>";

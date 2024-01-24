@@ -5,7 +5,7 @@ require_once "../functions.php";
 require_once "../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 $userOutlet = query("SELECT nama, id FROM tb_outlet WHERE id = {$_SESSION["auth"]->user["id_outlet"]}");

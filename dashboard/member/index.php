@@ -5,7 +5,7 @@ require_once "../../functions.php";
 require_once "../../config.php";
 
 if (!Auth::isAuthenticated()) {
-    exit(header("Location: ../login.php"));
+    exit(header("Location: $LOGIN_PATH"));
 }
 
 $search = $_GET["search"] ?? NULL;
@@ -20,7 +20,7 @@ CASE
     ELSE 'Perempuan'
 END AS gender,
 tlp, token FROM tb_member $filter ORDER BY id ASC;";
-$outlet = query($sql);
+$idOutlet = query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +67,7 @@ $outlet = query($sql);
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($outlet as $k => $row) {
+                            foreach ($idOutlet as $k => $row) {
                                 echo "<tr>";
                                 foreach ($row as $data) {
                                     echo "<td>$data</td>";

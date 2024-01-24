@@ -30,10 +30,10 @@ $payload = json_decode(file_get_contents("php://input"), true);
 $id = $payload["id"] ?? NULL;
 $nama = $payload["nama"] ?? NULL;
 $jenis = $payload["jenis"] ?? NULL;
-$outlet = $payload["outlet"] ?? NULL;
+$idOutlet = $payload["outlet"] ?? NULL;
 $harga = $payload["harga"] ?? NULL;
 
-if (!@$id || !@$nama || !@$jenis || !@$outlet || !@$harga) {
+if (!@$id || !@$nama || !@$jenis || !@$idOutlet || !@$harga) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
@@ -72,7 +72,7 @@ if ($harga < 1000) {
     ]));
 }
 
-$sql = "SELECT id FROM tb_outlet WHERE id = '$outlet'";
+$sql = "SELECT id FROM tb_outlet WHERE id = '$idOutlet'";
 $outletData = query($sql);
 
 if (empty($outletData)) {
@@ -82,7 +82,7 @@ if (empty($outletData)) {
     ]));
 }
 
-$sql = "UPDATE tb_paket SET id_outlet = '$outlet', jenis = '$jenis', nama_paket = '$nama', harga = '$harga' WHERE id = '$id'";
+$sql = "UPDATE tb_paket SET id_outlet = '$idOutlet', jenis = '$jenis', nama_paket = '$nama', harga = '$harga' WHERE id = '$id'";
 query($sql);
 
 logger("UPDATE paket", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");

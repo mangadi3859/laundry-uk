@@ -57,3 +57,13 @@ function isPermited(array $roles): bool
 {
     return in_array($_SESSION["auth"]->user["role"], $roles);
 }
+
+function calculateDiscount(int $iteration)
+{
+    global $ITERATION_PERDISCOUNT;
+    global $MAX_DISCOUNT;
+    global $DISCOUNT;
+
+    $discount = $DISCOUNT * floor($iteration / $ITERATION_PERDISCOUNT);
+    return $discount > $MAX_DISCOUNT ? $MAX_DISCOUNT : $discount;
+}

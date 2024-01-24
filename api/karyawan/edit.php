@@ -33,10 +33,10 @@ $username = $payload["username"] ?? NULL;
 $email = $payload["email"] ?? NULL;
 $password = $payload["password"] ?? NULL;
 $role = $payload["role"] ?? NULL;
-$outlet = $payload["outlet"] ?? NULL;
+$idOutlet = $payload["outlet"] ?? NULL;
 
 
-if (!@$id || !@$nama || !@$username || !@$email || !@$role || !@$outlet) {
+if (!@$id || !@$nama || !@$username || !@$email || !@$role || !@$idOutlet) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
@@ -82,7 +82,7 @@ if ($user[0]["email"]) {
     ]));
 }
 
-$sql = "SELECT id FROM tb_outlet WHERE id = '$outlet'";
+$sql = "SELECT id FROM tb_outlet WHERE id = '$idOutlet'";
 $outletData = query($sql);
 
 if (empty($outletData)) {
@@ -93,7 +93,7 @@ if (empty($outletData)) {
 }
 
 $hash = @$password ? ", password = '" . password_hash($password, PASSWORD_BCRYPT) . "'" : "";
-$sql = "UPDATE tb_user SET nama = '$nama', username = '$username', id_outlet = '$outlet', `role` = '$role' $hash WHERE id = '$id'";
+$sql = "UPDATE tb_user SET nama = '$nama', username = '$username', id_outlet = '$idOutlet', `role` = '$role' $hash WHERE id = '$id'";
 query($sql);
 
 logger("UPDATE USER", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");

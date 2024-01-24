@@ -41,9 +41,9 @@ if (!@$id || !@$nama || !@$alamat || !@$gender || !@$nohp) {
 }
 
 $sql = "SELECT id FROM tb_member WHERE id = '$id'";
-$outlet = query($sql);
+$idOutlet = query($sql);
 
-if (empty($outlet)) {
+if (empty($idOutlet)) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Member tidak ditemukan"

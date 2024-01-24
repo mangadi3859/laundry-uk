@@ -1,0 +1,31 @@
+.status-edit-btn {
+    padding: 0.25rem 0.5rem;
+    /* margin-left: 0.25rem; */
+    /* background-color: #d1ecf1; */
+    font-size: var(--type-md);
+    transition: 0.1s ease;
+}
+
+.status-edit-btn:is(:hover, :focus) {
+    color: var(--accent-700);
+    transform: scale(1.05);
+}
+
+.btn-accent {
+    background-color: var(--accent-base);
+}
+
+.btn-accent:is(:hover, :focus) {
+    background-color: var(--accent-600);
+}
+
+.tb-action > * {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.filter-member-hide,
+.filter-outlet-hide,
+.filter-name-hide {
+    display: none;
+}

@@ -4,6 +4,12 @@ $LOGGER_PATH = dirname(__FILE__) . "/LOGGER.txt";
 $ERROR_LOG_PATH = dirname(__FILE__) . "/ERROR.txt";
 
 $ROOT_PATH = "/laundry-uk";
+$LOGIN_PATH = $ROOT_PATH . "/login.php";
+
+$MAX_DISCOUNT = .35;
+$DISCOUNT = .1;
+$ITERATION_PERDISCOUNT = 3;
+$TAX = .075;
 
 class DashboardTab
 {

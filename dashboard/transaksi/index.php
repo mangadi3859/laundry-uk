@@ -148,6 +148,11 @@ $member = query($sql);
                                         continue;
                                     }
 
+                                    if ($k == "batas_waktu" && $warning) {
+                                        echo "<td><a data-warning='{$row['batas_waktu']}' title='Batas waktu terlewat' class='warning fa-triangle-exclamation fas'></a> $data</td>";
+                                        continue;
+                                    }
+
                                     if ($k == "tgl_bayar" && $row["dibayar"] != "dibayar") {
                                         echo "<td>-</td>";
                                         continue;
@@ -200,11 +205,14 @@ $member = query($sql);
                                     } else
                                         echo "<td>$data</td>";
                                 }
+
+                                $isAdmin = isPermited([Privilege::$ADMIN]);
+                                $editBtn = $isAdmin ? "<a href='edit.php?id={$row['id']}' title='EDIT DATA' class='action-btn btn-primary fas fa-gear'></a>" : "";
                                 echo <<<action
                                 <td class="tb-action">
                                     <a href='view.php?id={$row['id']}' title="VIEW DATA" class='action-btn btn-accent fa-eye fas'></a>
+                                    $editBtn
                                     <a data-action-delete="{$row['id']}" title="HAPUS DATA" class='action-btn btn-danger fas fa-trash'></a>
-                                    <a href='edit.php?id={$row['id']}' title="EDIT DATA" class='action-btn btn-primary fas fa-gear'></a>
                                 </td>
                                 action;
                                 echo "</tr>";

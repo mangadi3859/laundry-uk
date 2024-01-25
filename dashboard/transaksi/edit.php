@@ -68,7 +68,6 @@ $users = query($sql);
     <!-- JS -->
     <script src="../../public/lib/sweatalert/sweatalert.js" defer></script>
     <script src="../../public/js/global.js" defer></script>
-    <script src="../../public/js/transaksi.js" defer></script>
     <script src="../../public/js/transaksi-edit.js" defer></script>
 </head>
 <body>
@@ -91,7 +90,7 @@ $users = query($sql);
                         <datalist name="member" id="list-member" class="input" required>
                             <?php
                             foreach ($member as $opt) {
-                                echo "<option value='{$opt['id']}'>{$opt['nama']}</option>";
+                                echo "<option value='{$opt['nama']}'></option>";
                             }
                             ?>
                         </datalist>

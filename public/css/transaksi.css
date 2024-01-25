@@ -47,6 +47,11 @@
     flex-grow: 1;
 } */
 
+tr:has(.warning) {
+    background-color: #ffdde1;
+}
+
 .warning {
     color: var(--accent-base);
+    margin-right: 0.5rem;
 }

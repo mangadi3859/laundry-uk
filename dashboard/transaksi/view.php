@@ -49,8 +49,8 @@ WHERE id_transaksi = '$id'
 ";
 $items = query($sql);
 
-$sql = "SELECT COUNT(*) AS CT FROM tb_transaksi WHERE id_member = '$idMember' AND dibayar = 'dibayar'";
-$diskon = calculateDiscount((int) query($sql)[0]["CT"]);
+// $sql = "SELECT COUNT(*) AS CT FROM tb_transaksi WHERE id_member = '$idMember' AND dibayar = 'dibayar'";
+$diskon = $_transaksi["diskon"];
 ?>
 <!DOCTYPE html>
 <html lang="en">

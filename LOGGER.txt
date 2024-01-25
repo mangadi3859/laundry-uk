@@ -112,3 +112,21 @@
 [2024/01/25 07:32 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
 [2024/01/25 07:37 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
 [2024/01/25 07:37 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/25 09:43 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/25 09:44 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/25 09:45 AM] [UPDATE TRANSAKSI]: (Isla) just modified a record with id (1)
+[2024/01/25 09:58 AM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 09:59 AM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (6)
+[2024/01/25 10:01 AM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 10:01 AM] [UPDATE TRANSAKSI]: (Isla) just modified a record with id (8)
+[2024/01/25 11:27 AM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => selesai) with id (6)
+[2024/01/25 11:27 AM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => proses) with id (7)
+[2024/01/25 11:28 AM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (8)
+[2024/01/25 11:28 AM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (dibayar => belum_dibayar) with id (8)
+[2024/01/25 11:32 AM] [INSERT MEMBER]: (Isla) just created a new record
+[2024/01/25 11:32 AM] [INSERT MEMBER]: (Isla) just created a new record
+[2024/01/25 11:33 AM] [INSERT MEMBER]: (Isla) just created a new record
+[2024/01/25 11:35 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/25 11:36 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/01/25 11:38 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/01/25 11:38 AM] [LOGIN]: Someone logged in as (Isla)

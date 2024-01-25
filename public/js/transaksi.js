@@ -15,7 +15,7 @@ warnings.forEach((el) =>
         Swal.fire({
             title: "Warning",
             icon: "info",
-            html: `Batas waktu sudah terlewat <strong>${moment(new Date(ev.target.dataset.warning)).fromNow()}</strong>`,
+            html: `Batas waktu sudah terlewat <strong class="accent">${moment(new Date(ev.target.dataset.warning)).fromNow()}</strong>`,
             showCloseButton: true,
         });
     })

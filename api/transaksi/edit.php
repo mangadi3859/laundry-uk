@@ -68,7 +68,7 @@ if (empty($kasir)) {
     ]));
 }
 
-$sql = "UPDATE tb_transaksi SET id_member = '{$mem['id']}', tgl = '$tgl', batas_waktu = '$deadline', id_user = '{$kasir['id']}', biaya_tambahan = '$extra'  WHERE id = '$id'";
+$sql = "UPDATE tb_transaksi SET id_member = '{$mem[0]['id']}', tgl = '$tgl', batas_waktu = '$deadline', id_user = '{$kasir[0]['id']}', biaya_tambahan = '$extra'  WHERE id = '$id'";
 query($sql);
 
 logger("UPDATE TRANSAKSI", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");

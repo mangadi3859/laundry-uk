@@ -313,3 +313,11 @@ FROM tb_transaksi
 JOIN tb_member ON tb_transaksi.id_member = tb_member.id
 WHERE id = '1'
 
+[2024/01/25 09:43 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_transaksi`, CONSTRAINT `FK_member` FOREIGN KEY (`id_member`) REFERENCES `tb_member` (`id`))
+
+[2024/01/25 09:43 AM] [SQL QUERY]: UPDATE tb_transaksi SET id_member = '', tgl = '2024-01-22', batas_waktu = '2024-01-26', id_user = '', biaya_tambahan = '5000'  WHERE id = '1'
+
+[2024/01/25 09:44 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_transaksi`, CONSTRAINT `FK_member` FOREIGN KEY (`id_member`) REFERENCES `tb_member` (`id`))
+
+[2024/01/25 09:44 AM] [SQL QUERY]: UPDATE tb_transaksi SET id_member = '', tgl = '2024-01-22', batas_waktu = '2024-01-26', id_user = '', biaya_tambahan = '5000'  WHERE id = '1'
+

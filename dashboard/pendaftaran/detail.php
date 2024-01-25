@@ -47,7 +47,7 @@ $sql = "SELECT * FROM tb_paket WHERE id_outlet = '$idOutlet'";
 $paket = query($sql);
 
 $sql = "SELECT COUNT(*) AS CT FROM tb_transaksi WHERE id_member = '$idMember' AND dibayar = 'dibayar'";
-$diskon = query($sql)[0]["CT"];
+$diskon = calculateDiscount((int) query($sql)[0]["CT"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,7 +143,7 @@ $diskon = query($sql)[0]["CT"];
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody data-table-detail>
+                    <tbody data-table-detail data-member="<?= $idMember ?>" data-outlet="<?= $idOutlet ?>" data-status="<?= $status ?>" data-payment="<?= $dibayar ?>">
 
                         <tr data-first-row style="border-top: 2px solid black;">
                             <td></td>

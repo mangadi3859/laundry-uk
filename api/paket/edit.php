@@ -85,7 +85,7 @@ if (empty($outletData)) {
 $sql = "UPDATE tb_paket SET id_outlet = '$idOutlet', jenis = '$jenis', nama_paket = '$nama', harga = '$harga' WHERE id = '$id'";
 query($sql);
 
-logger("UPDATE paket", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");
+logger("UPDATE PAKET", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($id)");
 exit(json_encode([
     "status" => "ok",
 ]));

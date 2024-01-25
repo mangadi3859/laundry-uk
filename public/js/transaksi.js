@@ -3,7 +3,23 @@ const editPembayaran = document.querySelectorAll("[data-pembayaran-edit]");
 const nameForm = document.querySelector("[data-member-form]");
 const outletFilter = document.querySelector("[data-filter-outlet]");
 const memberFilter = document.querySelector("[data-filter-member]");
+const deleleBtn = document.querySelectorAll("[data-action-delete]");
 const rows = document.querySelectorAll("tr[data-outlet]");
+const warnings = document.querySelectorAll("[data-warning]");
+
+moment.tz.setDefault("Asia/Makassar");
+moment.locale("id");
+
+warnings.forEach((el) =>
+    el.addEventListener("click", (ev) => {
+        Swal.fire({
+            title: "Warning",
+            icon: "info",
+            html: `Batas waktu sudah terlewat <strong>${moment(new Date(ev.target.dataset.warning)).fromNow()}</strong>`,
+            showCloseButton: true,
+        });
+    })
+);
 
 editStatus.forEach((el) =>
     el.addEventListener("click", async (ev) => {
@@ -161,7 +177,61 @@ nameForm?.addEventListener("submit", (el) => {
     let value = el.target.querySelector("#i-name").value;
     if (!value) return rows.forEach((e) => e.classList.remove("filter-name-hide"));
     rows.forEach((e) => {
-        if (e.dataset.memberName.toLowerCase().includes(value)) return e.classList.remove("filter-name-hide");
+        if (e.dataset.memberName.toLowerCase() == value.toLowerCase()) return e.classList.remove("filter-name-hide");
         e.classList.add("filter-name-hide");
+    });
+});
+
+deleleBtn.forEach((e) => {
+    e.addEventListener("click", async () => {
+        try {
+            let confirm = await DangerConfirm.fire({
+                title: "Konfirmasi penghapusan data",
+                html: `Data transaksi ini akan dihapus`,
+                footer: "Semua data yang bersangkutan akan ikut terhapus!",
+            });
+
+            if (!confirm.isConfirmed) return;
+
+            let req = await fetch("delete.php", {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify({
+                    id: e.dataset.actionDelete,
+                }),
+            });
+
+            let res = await req.json();
+
+            if (res.status != "ok") {
+                return Swal.fire({
+                    icon: "error",
+                    title: "Proses Gagal",
+                    text: res.message,
+                    showCloseButton: true,
+                    confirmButtonText: "OK",
+                });
+            }
+
+            await Swal.fire({
+                icon: "success",
+                title: "Data dihapus",
+                confirmButtonText: "OK",
+                timer: 2000,
+                showProgressBar: true,
+            });
+
+            window.location.reload();
+        } catch (err) {
+            return Swal.fire({
+                icon: "error",
+                title: "Proses Gagal",
+                text: err.toString(),
+                showCloseButton: true,
+                confirmButtonText: "OK",
+            });
+        }
     });
 });

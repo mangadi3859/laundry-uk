@@ -11,6 +11,10 @@ const subTotalCol = document.querySelector("[data-col-subtotal]");
 const pajakCol = document.querySelector("[data-col-pajak]");
 const diskonCol = document.querySelector("[data-col-diskon]");
 const totalCol = document.querySelector("[data-col-total]");
+const idMember = document.querySelector("[data-member]").dataset.member;
+const idOutlet = document.querySelector("[data-outlet]").dataset.outlet;
+const payment = document.querySelector("[data-payment]").dataset.payment;
+const _status = document.querySelector("[data-status]").dataset.status;
 
 const items = [];
 let cur;
@@ -159,3 +163,54 @@ function handleEdit(element) {
     qtyBtn.parentNode.style.display = "";
     preview.style.display = "";
 }
+
+submitBtn.addEventListener("click", async (e) => {
+    if (!items.length) {
+        return Swal.fire({
+            title: "Gagal",
+            text: "Tambah setidaknya 1 paket",
+            icon: "error",
+            showCloseButton: true,
+            confirmButtonText: "Tutup",
+        });
+    }
+
+    let res = await (
+        await fetch("../../api/pendaftaran.php", {
+            method: "POST",
+            body: JSON.stringify({
+                outlet: idOutlet,
+                member: idMember,
+                items,
+                payment,
+                status: _status,
+                extra: extraPayment,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+    ).json();
+
+    if (res.status != "ok") {
+        return Swal.fire({
+            title: "Gagal",
+            text: res.message,
+            icon: "error",
+            showCloseButton: true,
+            confirmButtonText: "Ulang",
+        });
+    }
+
+    await Swal.fire({
+        title: "Selesai",
+        text: "Data ditambah",
+        icon: "success",
+        timer: 2000,
+        showCloseButton: true,
+        confirmButtonText: "OK",
+        timerProgressBar: true,
+    });
+
+    window.location = "../transaksi";
+});

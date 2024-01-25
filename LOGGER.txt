@@ -84,3 +84,31 @@
 [2024/01/24 12:23 PM] [UPDATE TRANSAKSI]: (Ayunda Mika) just modified status (selesai => proses) with id (1)
 [2024/01/24 12:23 PM] [UPDATE TRANSAKSI]: (Ayunda Mika) just modified payment status (belum_dibayar => dibayar) with id (1)
 [2024/01/24 12:23 PM] [UPDATE TRANSAKSI]: (Ayunda Mika) just modified payment status (dibayar => belum_dibayar) with id (1)
+[2024/01/24 06:11 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/24 06:12 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/24 06:15 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/24 06:15 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/24 06:15 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/24 06:18 PM] [INSERT TRANSAKSI]: (Ayunda Mika) just created a new record
+[2024/01/24 06:25 PM] [UPDATE TRANSAKSI]: (Ayunda Mika) just modified status (baru => proses) with id (2)
+[2024/01/24 06:26 PM] [UPDATE TRANSAKSI]: (Ayunda Mika) just modified status (proses => baru) with id (2)
+[2024/01/24 06:26 PM] [UPDATE TRANSAKSI]: (Ayunda Mika) just modified payment status (belum_dibayar => dibayar) with id (2)
+[2024/01/24 06:27 PM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/01/24 06:27 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/24 06:59 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/24 07:00 PM] [DELETE TRANSAKSI]: (Isla) just deleted a record with the id (3)
+[2024/01/24 07:02 PM] [DELETE TRANSAKSI]: (Isla) just deleted a record with the id (3)
+[2024/01/24 07:04 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/24 07:04 PM] [DELETE MEMBER]: (Isla) just deleted a record with the id (5)
+[2024/01/24 07:05 PM] [INSERT MEMBER]: (Isla) just created a new record
+[2024/01/24 09:03 PM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/24 09:14 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (1)
+[2024/01/24 09:15 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/24 09:16 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (5)
+[2024/01/24 09:17 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/24 09:18 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (proses => diambil) with id (1)
+[2024/01/24 09:18 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => selesai) with id (2)
+[2024/01/24 09:18 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => proses) with id (5)
+[2024/01/25 07:32 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/25 07:37 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/25 07:37 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail

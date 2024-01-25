@@ -20,13 +20,19 @@ tb_transaksi.batas_waktu AS batas_waktu,
 tb_transaksi.tgl_bayar AS tgl_bayar,
 tb_transaksi.status AS status,
 tb_transaksi.dibayar AS dibayar,
+tb_user.nama AS kasir,
 tb_member.nama AS member_name,
 tb_transaksi.id_outlet AS id_outlet,
-tb_transaksi.id_member AS id_member
+tb_transaksi.id_member AS id_member,
+CASE
+    WHEN tb_transaksi.batas_waktu <= CURRENT_TIMESTAMP AND tb_transaksi.dibayar != 'dibayar' THEN 1
+    ELSE 0
+END AS warning
 FROM tb_transaksi
 JOIN tb_user ON tb_user.id = tb_transaksi.id_user
 JOIN tb_member ON tb_member.id = tb_transaksi.id_member
 JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
+ORDER BY tb_transaksi.id
 ";
 
 $transaksi = query($sql);
@@ -53,6 +59,8 @@ $member = query($sql);
 
     <!-- JS -->
     <script src="../../public/lib/sweatalert/sweatalert.js" defer></script>
+    <script src="../../public/lib/moment/moment.js" defer></script>
+    <script src="../../public/lib/moment/timezone.js" defer></script>
     <script src="../../public/js/global.js" defer></script>
     <script src="../../public/js/transaksi.js" defer></script>
 </head>
@@ -63,15 +71,22 @@ $member = query($sql);
         <main id="main">
             <?php include "../../components/navbar.php" ?>
             <div class="action-table">
-                <a href="../pendaftaran" class="action-table-btn"><i class="fas fa-plus"></i> Tambah transaksi</a>
-                <select name="outlet" id="i-outlet" class="input input-action" data-filter-outlet>
-                    <option value="">--- Pilih outlet ---</option>
-                    <?php
+                <?php
+                if (isPermited([Privilege::$ADMIN, Privilege::$KASIR])) {
+                    $options = "";
                     foreach ($idOutlet as $option) {
-                        echo "<option value='{$option['id']}'>{$option['nama']}</option>";
+                        $options .= "<option value='{$option['id']}'>{$option['nama']}</option>";
                     }
-                    ?>
-                </select>
+
+                    echo <<<jw
+                        <a href="../pendaftaran" class="action-table-btn"><i class="fas fa-plus"></i> Tambah transaksi</a>
+                        <select name="outlet" id="i-outlet" class="input input-action" data-filter-outlet>
+                            <option value="">--- Pilih outlet ---</option>
+                            $options
+                        </select>
+                        jw;
+                }
+                ?>
 
                 <select name="member" id="i-member" class="input input-action" data-filter-member>
                     <option value="">--- Pilih member ---</option>
@@ -83,14 +98,20 @@ $member = query($sql);
                 </select>
 
                 <form action="" method="GET" class="action-form" data-member-form>
-                    <input id="i-name" name="search" type="text" placeholder="Cari Member" class="input input-action">
+                    <input id="i-name" name="search" type="text" placeholder="Cari Kode Invoice" class="input input-action">
                     <button type="submit" class="action-table-btn"><i class="fas fa-magnifying-glass"></i></button>
                 </form>
             </div>
 
-            <div class="action-table">
-                <a href="report.php" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
-            </div>
+            <?php
+            if (isPermited([Privilege::$ADMIN, Privilege::$OWNER]))
+                echo <<<jw
+                <div class="action-table">
+                    <a href="report.php" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
+                </div>
+                jw;
+            ?>
+            
             <div class="table-container">
                     <table>
                         <thead>
@@ -104,12 +125,14 @@ $member = query($sql);
                                 <th>Tanggal Bayar</th>
                                 <th>Status</th>
                                 <th>Pembayaran</th>
+                                <th>Kasir</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             foreach ($transaksi as $k => $row) {
+                                $warning = array_pop($row);
                                 $idMember = array_pop($row);
                                 $idOutlet = array_pop($row);
                                 $member = array_pop($row);
@@ -118,10 +141,16 @@ $member = query($sql);
                                 $row["tgl"] = date("Y/m/d", strtotime($row["tgl"]));
                                 $row["tgl_bayar"] = date("Y/m/d", strtotime($row["tgl_bayar"]));
                                 $row["batas_waktu"] = date("Y/m/d", strtotime($row["batas_waktu"]));
-                                echo "<tr data-outlet='{$idOutlet}' data-member='{$idMember}' data-member-name='$member'>";
+                                echo "<tr data-outlet='{$idOutlet}' data-member='{$idMember}' data-member-name='{$row['invoice']}'>";
                                 foreach ($row as $k => $data) {
+                                    if ($k == "invoice" && $warning) {
+                                        echo "<td><a data-warning='{$row['batas_waktu']}' title='Batas waktu terlewat' class='warning fa-triangle-exclamation fas'></a> $data</td>";
+                                        continue;
+                                    }
+
                                     if ($k == "tgl_bayar" && $row["dibayar"] != "dibayar") {
                                         echo "<td>-</td>";
+                                        continue;
                                     }
 
                                     if ($k == "status") {
@@ -150,7 +179,7 @@ $member = query($sql);
                                                 }
                                         }
 
-                                        echo "<td><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $text;'>$data</span> <button data-info-value='$data' data-status-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></td>";
+                                        echo "<td><div class='td-info'><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $text;'>$data</span> <button data-info-value='$data' data-status-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>";
                                     } else if ($k == "dibayar") {
                                         $bg = "";
                                         $text = "";
@@ -167,7 +196,7 @@ $member = query($sql);
                                                 }
                                         }
 
-                                        echo "<td><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $text;'>$data</span> <button data-info-value='$data' data-pembayaran-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></td>";
+                                        echo "<td><div class='td-info'><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $text;'>$data</span> <button data-info-value='$data' data-pembayaran-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>";
                                     } else
                                         echo "<td>$data</td>";
                                 }

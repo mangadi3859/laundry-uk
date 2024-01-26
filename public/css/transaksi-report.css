@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,700&display=swap");
+
+body {
+    background-color: white !important;
+    font-family: Poppins;
+}
+
+#table {
+    width: 100%;
+    height: auto;
+}
+
+#table,
+tr,
+td {
+    border-collapse: collapse;
+}
+
+#table tr {
+    background-color: transparent;
+}
+
+th {
+    font-weight: normal;
+}
+
+#table td {
+    padding: 0.15rem;
+}
+
+@media print {
+    @page {
+        size: landscape;
+    }
+
+    /* body {
+        writing-mode: vertical-rl;
+    } */
+}

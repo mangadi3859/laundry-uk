@@ -321,3 +321,21 @@ WHERE id = '1'
 
 [2024/01/25 09:44 AM] [SQL QUERY]: UPDATE tb_transaksi SET id_member = '', tgl = '2024-01-22', batas_waktu = '2024-01-26', id_user = '', biaya_tambahan = '5000'  WHERE id = '1'
 
+[2024/01/26 08:27 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id_member = '11'' at line 14
+
+[2024/01/26 08:27 AM] [SQL QUERY]: SELECT tb_transaksi.id AS id, 
+    tb_transaksi.kode_invoice AS invoice, 
+    tb_transaksi.tgl AS tgl, 
+    tb_transaksi.batas_waktu AS batas_waktu,
+    tb_transaksi.tgl_bayar AS tgl_bayar,
+    tb_transaksi.status AS status,
+    tb_transaksi.dibayar AS dibayar,
+    CASE
+        WHEN tb_transaksi.batas_waktu <= CURRENT_TIMESTAMP AND tb_transaksi.dibayar != 'dibayar' THEN 1
+        ELSE 0
+    END AS warning
+    FROM tb_transaksi
+    ORDER BY tb_transaksi.id
+    WHERE id_member = '11'
+    
+

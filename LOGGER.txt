@@ -130,3 +130,31 @@
 [2024/01/25 11:36 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
 [2024/01/25 11:38 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
 [2024/01/25 11:38 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/25 09:51 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/25 09:56 PM] [LOGIN]: Someone logged in as (Shigemoto Itsuki)
+[2024/01/25 10:00 PM] [DELETE MEMBER]: (Shigemoto Itsuki) just deleted a record with the id (1)
+[2024/01/25 10:03 PM] [INSERT MEMBER]: (Isla) just created a new record
+[2024/01/25 10:04 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 10:04 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 10:04 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 10:04 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (9)
+[2024/01/25 10:05 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (10)
+[2024/01/25 10:05 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (11)
+[2024/01/25 10:05 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => selesai) with id (9)
+[2024/01/25 10:05 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => proses) with id (10)
+[2024/01/25 10:05 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (proses => selesai) with id (10)
+[2024/01/25 10:06 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 10:06 PM] [LOGOUT]: Someone logged out from (Shigemoto Itsuki)
+[2024/01/25 10:06 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (dibayar => belum_dibayar) with id (10)
+[2024/01/25 10:06 PM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/01/25 10:06 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (selesai => baru) with id (10)
+[2024/01/25 10:06 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (12)
+[2024/01/25 10:07 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/25 10:07 PM] [UPDATE TRANSAKSI]: (Isla) just modified a record with id (10)
+[2024/01/26 07:34 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/26 07:43 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/26 07:57 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/26 08:15 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/26 08:27 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/01/26 08:30 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/01/26 08:32 AM] [LOGIN]: Someone logged in as (Isla)

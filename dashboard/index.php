@@ -127,7 +127,7 @@ $isOwner = $user["role"] == Privilege::$OWNER;
                     </div>
                     <div <?= $isAdmin || $isOwner ? "" : "hidden" ?> class="actions">
                         <a href="transaksi">Lihat transaksi <i class="fas fa-arrow-up-right-from-square"></i></a>
-                        <a href="transaksi">Buat laporan <i class="fas fa-print"></i></a>
+                        <a href="transaksi/report.php">Buat laporan <i class="fas fa-print"></i></a>
                     </div>
                 </div>
             </div>

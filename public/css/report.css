@@ -1,0 +1,43 @@
+#print-layer table {
+    width: 100%;
+}
+
+#print-layer :is(table, tr, td) {
+    border-collapse: collapse;
+}
+
+#print-layer table tr {
+    background-color: transparent;
+}
+
+#print-layer table th {
+    font-weight: normal;
+}
+
+#print-layer table td {
+    padding: 0.15rem;
+}
+
+#print-layer {
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    inset: 0;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+}
+
+@media print {
+    @page {
+        size: landscape;
+    }
+
+    #print-layer {
+        display: block;
+    }
+
+    /* body {
+        writing-mode: vertical-rl;
+    } */
+}

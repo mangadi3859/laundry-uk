@@ -78,7 +78,7 @@ try {
     $invoice = "INV" . substr("000" . $idOutlet, -3) . "-" . date("y") . strtoupper(Auth::generateToken(7));
     $sql = "INSERT INTO tb_transaksi VALUE (
         '', 
-        '$idOutlet',
+        '$idOutlet',    
         '$invoice',
         '$idMember',
         CURRENT_TIMESTAMP,

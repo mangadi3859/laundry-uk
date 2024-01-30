@@ -32,13 +32,13 @@ FROM tb_transaksi
 JOIN tb_user ON tb_user.id = tb_transaksi.id_user
 JOIN tb_member ON tb_member.id = tb_transaksi.id_member
 JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
-ORDER BY tb_transaksi.id
+ORDER BY tb_transaksi.id DESC
 ";
 
 $transaksi = query($sql);
 
 $sql = "SELECT id, nama FROM tb_outlet";
-$idOutlet = query($sql);
+$outlet = query($sql);
 
 $sql = "SELECT id, nama FROM tb_member";
 $member = query($sql);
@@ -56,6 +56,7 @@ $member = query($sql);
     <link rel="stylesheet" href="../../public/css/member.css">
     <link rel="stylesheet" href="../../public/css/paket.css">
     <link rel="stylesheet" href="../../public/css/transaksi.css">
+    <link rel="stylesheet" href="../../public/css/report.css">
 
     <!-- JS -->
     <script src="../../public/lib/sweatalert/sweatalert.js" defer></script>
@@ -63,9 +64,60 @@ $member = query($sql);
     <script src="../../public/lib/moment/timezone.js" defer></script>
     <script src="../../public/js/global.js" defer></script>
     <script src="../../public/js/transaksi.js" defer></script>
+    <script src="../../public/js/report.js" defer></script>
 </head>
 <body>
     <?php include "../../components/sidebar.php" ?>
+
+    <div id="print-layer">
+        <table border="1" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Invoice</th>
+                    <th>Outlet</th>
+                    <th>Member</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Batas Waktu</th>
+                    <th>Tanggal Bayar</th>
+                    <th>Status</th>
+                    <th>Pembayaran</th>
+                    <th>Kasir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $i = 0;
+                foreach ($transaksi as $k => $row) {
+                    $warning = array_pop($row);
+                    $idMember = array_pop($row);
+                    $idOutlet = array_pop($row);
+                    array_pop($row);
+
+                    $i++;
+                    $row["tgl"] = date("Y/m/d", strtotime($row["tgl"]));
+                    $row["tgl_bayar"] = date("Y/m/d", strtotime($row["tgl_bayar"]));
+                    $row["batas_waktu"] = date("Y/m/d", strtotime($row["batas_waktu"]));
+                    echo "<tr data-outlet='{$idOutlet}' data-member='{$idMember}' data-member-name='{$row['invoice']}'>";
+                    foreach ($row as $k => $data) {
+                        if ($k == "id") {
+                            echo "<td>$i</td>";
+                            continue;
+                        }
+
+                        if ($k == "tgl_bayar" && $row["dibayar"] != "dibayar") {
+                            echo "<td>-</td>";
+                            continue;
+                        } else
+                            echo "<td>$data</td>";
+                    }
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
     <div class="main-container">
         <img class="banner" src="../../public/assets/transaksi-banner.jpg">
         <main id="main">
@@ -74,7 +126,7 @@ $member = query($sql);
                 <?php
                 if (isPermited([Privilege::$ADMIN, Privilege::$KASIR])) {
                     $options = "";
-                    foreach ($idOutlet as $option) {
+                    foreach ($outlet as $option) {
                         $options .= "<option value='{$option['id']}'>{$option['nama']}</option>";
                     }
 
@@ -107,7 +159,7 @@ $member = query($sql);
             if (isPermited([Privilege::$ADMIN, Privilege::$OWNER]))
                 echo <<<jw
                 <div class="action-table">
-                    <a href="report.php" target="_blank" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
+                    <a id="printBtn" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
                 </div>
                 jw;
             ?>
@@ -131,6 +183,7 @@ $member = query($sql);
                         </thead>
                         <tbody>
                             <?php
+                            $i = 0;
                             foreach ($transaksi as $k => $row) {
                                 $warning = array_pop($row);
                                 $idMember = array_pop($row);
@@ -143,6 +196,12 @@ $member = query($sql);
                                 $row["batas_waktu"] = date("Y/m/d", strtotime($row["batas_waktu"]));
                                 echo "<tr data-outlet='{$idOutlet}' data-member='{$idMember}' data-member-name='{$row['invoice']}'>";
                                 foreach ($row as $k => $data) {
+                                    if ($k == "id") {
+                                        $i++;
+                                        echo "<td>$i</td>";
+                                        continue;
+                                    }
+
                                     if ($k == "invoice" && $warning) {
                                         echo "<td><a data-warning='{$row['batas_waktu']}' title='Batas waktu terlewat' class='warning fa-triangle-exclamation fas'></a> $data</td>";
                                         continue;

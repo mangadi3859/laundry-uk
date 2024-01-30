@@ -52,7 +52,7 @@ WHERE id_transaksi = '$id'
 $items = query($sql);
 
 // $sql = "SELECT COUNT(*) AS CT FROM tb_transaksi WHERE id_member = '$idMember' AND dibayar = 'dibayar'";
-$diskon = $_transaksi["diskon"];
+$diskon = (float) $_transaksi["diskon"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +132,7 @@ $diskon = $_transaksi["diskon"];
                     }
                     $pajak = ($subtotal + $extra) * $TAX;
                     $diskonStr = ($subtotal + $extra) * $diskon;
-                    $total = $subtotal + $extra + $pajak - $diskon;
+                    $total = $subtotal + $extra + $pajak - $diskonStr;
 
                     $_subtotal = number_format($subtotal);
                     $_extra = number_format($extra);
@@ -232,7 +232,7 @@ $diskon = $_transaksi["diskon"];
                         }
                         $pajak = ($subtotal + $extra) * $TAX;
                         $diskonStr = ($subtotal + $extra) * $diskon;
-                        $total = $subtotal + $extra + $pajak - $diskon;
+                        $total = $subtotal + $extra + $pajak - $diskonStr;
 
                         $_subtotal = number_format($subtotal);
                         $_extra = number_format($extra);

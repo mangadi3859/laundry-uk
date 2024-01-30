@@ -177,3 +177,11 @@
 [2024/01/30 08:59 AM] [INSERT TRANSAKSI]: (Ayunda Mika) just created a new record
 [2024/01/30 09:00 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
 [2024/01/30 09:00 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/01/30 10:03 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/30 10:03 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (15)
+[2024/01/30 10:03 PM] [UPDATE TRANSAKSI]: (Isla) just modified status (baru => proses) with id (15)
+[2024/01/30 10:06 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/30 10:06 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (16)
+[2024/01/30 10:15 PM] [DELETE TRANSAKSI]: (Isla) just deleted a record with the id (16)
+[2024/01/30 10:21 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/01/30 10:21 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (17)

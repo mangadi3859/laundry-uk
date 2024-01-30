@@ -100,7 +100,7 @@ $diskon = $_transaksi["diskon"];
                     <div class="actor-detail">
                         <div><?= $member[0]["nama"] ?></div>
                         <div><?= $member[0]["alamat"] ?></div>
-                        <div><strong><?= $_transaksi["status"] == "dibayar" ? "Paid" : "Unpaid" ?></strong></div>
+                        <div><strong><?= $_transaksi["dibayar"] == "dibayar" ? "Paid" : "Unpaid" ?></strong></div>
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@ $diskon = $_transaksi["diskon"];
                         <div class="actor-detail">
                             <div><?= $member[0]["nama"] ?></div>
                             <div><?= $member[0]["alamat"] ?></div>
-                            <div><strong><?= $_transaksi["status"] == "dibayar" ? "Paid" : "Unpaid" ?></strong></div>
+                            <div><strong><?= $_transaksi["dibayar"] == "dibayar" ? "Paid" : "Unpaid" ?></strong></div>
                         </div>
                     </div>
                 </div>

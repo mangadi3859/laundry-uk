@@ -41,14 +41,20 @@
     gap: 1rem;
 }
 
+.td-info span {
+    margin-inline: auto;
+}
+
 /* .td-info :first-child {
     min-width: 5rem;
     text-align: center;
     flex-grow: 1;
 } */
-
+tr {
+    background-color: white !important;
+}
 tr:has(.warning) {
-    background-color: #ffdde1;
+    background-color: #ffdde1 !important;
 }
 
 .warning {

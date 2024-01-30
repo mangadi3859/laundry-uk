@@ -107,7 +107,7 @@ $member = query($sql);
             if (isPermited([Privilege::$ADMIN, Privilege::$OWNER]))
                 echo <<<jw
                 <div class="action-table">
-                    <a href="report.php" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
+                    <a href="report.php" target="_blank" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
                 </div>
                 jw;
             ?>
@@ -161,47 +161,59 @@ $member = query($sql);
                                     if ($k == "status") {
                                         $bg = "";
                                         $text = "";
+                                        $border = "transparent";
                                         switch ($data) {
                                             case "baru": {
-                                                    $bg = "#cce5ff";
-                                                    $text = "#004085";
+                                                    $border = "#004a99";
+                                                    $bg = "#0062cc";
+                                                    $text = "white";
+                                                    // $bg = "#cce5ff";
+                                                    // $text = "#004085";
                                                     break;
                                                 }
                                             case "proses": {
-                                                    $bg = "#fff3cd";
-                                                    $text = "#856404";
+                                                    $border = "#cc9a06";
+                                                    $bg = "#ffc720";
+                                                    $text = "black";
+                                                    // $bg = "#fff3cd";
+                                                    // $text = "#856404";
                                                     break;
                                                 }
                                             case "selesai": {
-                                                    $bg = "#d4edda";
-                                                    $text = "#155724";
+                                                    $border = "#186429";
+                                                    $bg = "#24963e";
+                                                    $text = "white";
                                                     break;
                                                 }
                                             default: {
-                                                    $bg = "#d6d8d9";
-                                                    $text = "#1b1e21";
+                                                    $border = "#565e64";
+                                                    $bg = "#6c757d";
+                                                    $text = "white";
                                                     break;
                                                 }
                                         }
 
-                                        echo "<td><div class='td-info'><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $text;'>$data</span> <button data-info-value='$data' data-status-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>";
+                                        echo "<td><div class='td-info'><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $border;'>$data</span> <button data-info-value='$data' data-status-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>";
                                     } else if ($k == "dibayar") {
                                         $bg = "";
                                         $text = "";
+                                        $border = "transparent";
                                         switch ($data) {
                                             case "belum_dibayar": {
-                                                    $bg = "#fff3cd";
-                                                    $text = "#856404";
+                                                    $border = "#cc9a06";
+                                                    $bg = "#ffc720";
+                                                    $text = "black";
                                                     break;
                                                 }
                                             default: {
-                                                    $bg = "#d4edda";
-                                                    $text = "#155724";
+                                                    $border = "#186429";
+                                                    $bg = "#24963e";
+                                                    $text = "white";
                                                     break;
                                                 }
                                         }
 
-                                        echo "<td><div class='td-info'><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $text;'>$data</span> <button data-info-value='$data' data-pembayaran-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>";
+                                        echo "<td><div class='td-info'><span style='color: $text; background-color: $bg; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid $border;'>$data</span> <button data-info-value='$data' data-pembayaran-edit='{$row['id']}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>";
                                     } else
                                         echo "<td>$data</td>";
                                 }

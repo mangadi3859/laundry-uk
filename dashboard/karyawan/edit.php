@@ -12,7 +12,7 @@ permitAccess([Privilege::$ADMIN], "../");
 $_DASHBOARD = DashboardTab::$KARYAWAN;
 
 $id = $_GET["id"] ?? NULL;
-if (!@$id) {
+if (!@$id || $id == $_SESSION["auth"]->user["id"]) {
     exit(header("Location: ./"));
 }
 

@@ -274,3 +274,8 @@ table tbody tr:nth-of-type(odd) {
     cursor: not-allowed;
     color: #ccc;
 }
+
+[data-user-prohibited] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

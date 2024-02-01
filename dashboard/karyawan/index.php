@@ -79,9 +79,12 @@ $idOutlet = query($sql);
                                     } else
                                         echo "<td>$data</td>";
                                 }
+
+                                $isSameUser = $_SESSION["auth"]->user["id"] == $row['id'];
+                                $href = $isSameUser ? "data-user-prohibited" : "href='edit.php?id={$row['id']}'";
                                 echo <<<action
                                 <td class="tb-action">
-                                    <a href='edit.php?id={$row['id']}' title="EDIT DATA" class='action-btn btn-primary'>EDIT</a>
+                                    <a $href title="EDIT DATA" class='action-btn btn-primary'>EDIT</a>
                                 </td>
                                 action;
                                 echo "</tr>";

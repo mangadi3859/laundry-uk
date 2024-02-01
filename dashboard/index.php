@@ -80,21 +80,30 @@ $isOwner = $user["role"] == Privilege::$OWNER;
                         <div class="content">
                             <div class="content-box">
                                 <div class="box-title">
-                                    <i class="fa-circle-check fas"></i> <span>Selesai</span>
+                                    <div class="circle">
+                                        <i class="fa-circle-check fas"></i>
+                                    </div>
+                                    <span>Selesai</span>
                                 </div>
                                 <div class="box-body"><?= $laundry["selesai"] ?? 0 ?></div>
                             </div>
 
                             <div class="content-box">
                                 <div class="box-title">
-                                    <i class="fa-boxes-stacked fas"></i> <span>Proses</span>
+                                    <div class="circle">
+                                        <i class="fa-boxes-stacked fas"></i> 
+                                    </div>
+                                    <span>Proses</span>
                                 </div>
                                 <div class="box-body"><?= $laundry["proses"] ?? 0 ?></div>
                             </div>
 
                             <div class="content-box">
                                 <div class="box-title">
-                                    <i class="fa-layer-group fas"></i> <span>Baru</span>
+                                    <div class="circle">
+                                        <i class="fa-layer-group fas"></i> 
+                                    </div>
+                                    <span>Baru</span>
                                 </div>
                                 <div class="box-body"><?= $laundry["baru"] ?? 0 ?></div>
                             </div>
@@ -105,29 +114,38 @@ $isOwner = $user["role"] == Privilege::$OWNER;
                         <div class="content">
                             <div class="content-box">
                                 <div class="box-title">
-                                    <i class="fa-location-dot fas"></i> <span>Outlet</span>
+                                    <div class="circle">
+                                        <i class="fa-location-dot fas"></i> 
+                                    </div>
+                                    <span>Outlet</span>
                                 </div>
                                 <div class="box-body"><?= $dbOutlet["CT"] ?? 0 ?></div>
                             </div>
 
                             <div class="content-box">
                                 <div class="box-title">
-                                    <i class="fa-boxes-packing fas"></i> <span>Paket</span>
+                                    <div class="circle">
+                                        <i class="fa-boxes-packing fas"></i> 
+                                    </div>
+                                    <span>Paket</span>
                                 </div>
                                 <div class="box-body"><?= $dbPaket["CT"] ?? 0 ?></div>
                             </div>
 
                             <div class="content-box">
                                 <div class="box-title">
-                                    <i class="fa-user fas"></i> <span>Member</span>
+                                    <div class="circle">
+                                        <i class="fa-user fas"></i> 
+                                    </div>
+                                    <span>Member</span>
                                 </div>
                                 <div class="box-body"><?= $dbMember["CT"] ?? 0 ?></div>
                             </div>
                         </div>
                     </div>
-                    <div <?= $isAdmin || $isOwner ? "" : "hidden" ?> class="actions">
+                    <div <?= $isAdmin || $isKasir || $isOwner ? "" : "hidden" ?> class="actions">
                         <a href="transaksi">Lihat transaksi <i class="fas fa-arrow-up-right-from-square"></i></a>
-                        <a href="transaksi/report.php">Buat laporan <i class="fas fa-print"></i></a>
+                        <a href="transaksi?print">Buat laporan <i class="fas fa-print"></i></a>
                     </div>
                 </div>
             </div>

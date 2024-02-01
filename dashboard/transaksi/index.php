@@ -155,14 +155,9 @@ $member = query($sql);
                 </form>
             </div>
 
-            <?php
-            if (isPermited([Privilege::$ADMIN, Privilege::$OWNER]))
-                echo <<<jw
-                <div class="action-table">
-                    <a id="printBtn" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
-                </div>
-                jw;
-            ?>
+            <div class="action-table">
+                <a id="printBtn" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
+            </div>
             
             <div class="table-container">
                     <table>

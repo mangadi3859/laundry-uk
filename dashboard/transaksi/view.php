@@ -171,14 +171,9 @@ $diskon = (float) $_transaksi["diskon"];
         <img class="banner" src="../../public/assets/transaksi-banner.jpg">
         <main id="main">
         <?php include "../../components/navbar.php" ?>
-        <?php
-        if (isPermited([Privilege::$ADMIN, Privilege::$OWNER]))
-            echo <<<jw
             <div class="action-table">
-                <a id="printBtn" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
+                <a id="printBtn" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Print</a>
             </div>
-            jw;
-        ?>
             <div class="invoice-box">
                 <div class="invoice-head">
                     <div class="company">

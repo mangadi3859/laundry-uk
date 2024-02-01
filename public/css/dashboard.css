@@ -101,6 +101,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 .box-title {
@@ -108,6 +109,17 @@
     gap: 0.5rem;
     justify-content: flex-start;
     align-items: center;
+}
+
+.panel .content-box .circle {
+    width: 2.5rem;
+    height: auto;
+    background-color: var(--accent-100);
+    /* padding: 0.5rem; */
+    border-radius: 100vmax;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
 }
 
 .panel .content-box i {

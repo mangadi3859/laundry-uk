@@ -39,10 +39,20 @@ if (!@$nama || !@$alamat || !@$gender || !@$nohp) {
     ]));
 }
 
+$nama = strtolower($nama);
+
 if (!in_array($gender, ["L", "P"])) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Gender tidak valid"
+    ]));
+}
+
+$sql = "SELECT id FROM tb_member WHERE nama = '$nama'";
+if (sizeof(query($sql))) {
+    exit(json_encode([
+        "status" => "failed",
+        "message" => "Nama sudah terdaftar"
     ]));
 }
 

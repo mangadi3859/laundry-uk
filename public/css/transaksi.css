@@ -61,3 +61,7 @@ tr:has(.warning) {
     color: var(--accent-base);
     margin-right: 0.5rem;
 }
+
+#pagination {
+    margin-top: auto;
+}

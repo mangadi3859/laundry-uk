@@ -2,6 +2,7 @@
 
 $LOGGER_PATH = dirname(__FILE__) . "/LOGGER.txt";
 $ERROR_LOG_PATH = dirname(__FILE__) . "/ERROR.txt";
+$AVATAR_PATH = dirname(__FILE__) . "/public/tmp";
 
 $ROOT_PATH = "/laundry-uk";
 $LOGIN_PATH = $ROOT_PATH . "/login.php";

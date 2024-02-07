@@ -27,7 +27,8 @@ $isAdmin = $user["role"] == Privilege::$ADMIN;
 $isKasir = $user["role"] == Privilege::$KASIR;
 $isOwner = $user["role"] == Privilege::$OWNER;
 
-?>
+$avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg") ? "../public/tmp/av{$_SESSION["auth"]->user["id"]}.jpg" : "";
+?>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,7 @@ $isOwner = $user["role"] == Privilege::$OWNER;
 
     <!-- JS -->
     <script src="../public/lib/sweatalert/sweatalert.js" defer></script>
+    <script src="../public/js/global.js" defer></script>
     <script src="../public/js/dashboard.js" defer></script>
 </head>
 <body>
@@ -55,7 +57,17 @@ $isOwner = $user["role"] == Privilege::$OWNER;
             </div>
             <div class="container">
                 <div class="profile">
-                    <div class="avatar"><?= getInitial($_SESSION["auth"]->user["nama"]) ?></div>
+                    <div class="avatar">
+                        <?= getInitial($_SESSION["auth"]->user["nama"]) ?>
+                        <img data-default="<?= $avatarImg ?>" data-avatar-img src="<?= $avatarImg ?>">
+                        <label for="i-avatar"><span>Edit</span></label>
+                        <input data-avatar-input hidden type="file" accept="image/jpeg  " id="i-avatar">
+                    </div>
+                    <div class="avatar-action" data-avatar-action>
+                        <a data-avatar-save title="Simpan avatar">Simpan</a>
+                        <a data-avatar-cancel title="Batalkan perubahan avatar">Batal</a>
+                        <a data-avatar-delete title="Hapus avatar"><i class="fas fa-trash"></i></a>
+                    </div>
                     <div class="grid-info">
                         <div class="grid-info-name">ID</div>
                         <div class="grid-info-data"><?= getInitial($_SESSION["auth"]->user["id"]) ?></div>

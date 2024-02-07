@@ -27,7 +27,7 @@ $isAuth = Auth::isAuthenticated();
 
                 <div class="user-collapse">
                     <div style="text-transform: capitalize">$role</div>    
-                    <a href="$ROOT_PATH/logout.php" class="user-logout">Logout <i style="margin-left: auto;" class="fa-right-from-bracket fas"></i></a>
+                    <a data-logout-path="$ROOT_PATH/logout.php" data-logout-btn class="user-logout">Logout <i style="margin-left: auto;" class="fa-right-from-bracket fas"></i></a>
                 </div>
             </span>
             <div class="avatar">

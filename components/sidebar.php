@@ -78,7 +78,7 @@ $isOwner = $isAuth && $_user["role"] == Privilege::$OWNER;
     <?php
     if ($isAuth) {
         echo <<<at
-                <a data-logout-path="$ROOT_PATH/logout.php" id="logoutBtn"><span>Logout</span> <i style="margin-left: auto;" class="fa-right-from-bracket fas"></i></a>
+                <a data-logout-btn data-logout-path="$ROOT_PATH/logout.php"><span>Logout</span> <i style="margin-left: auto;" class="fa-right-from-bracket fas"></i></a>
             at;
     }
     ?>

@@ -73,6 +73,11 @@ $member = query($sql);
     <?php include "../../components/sidebar.php" ?>
 
     <div id="print-layer">
+        <div class="print-head">
+            <div style="font-size: 2rem;" class="brand">Laundry<span class="accent">Ina</span></div>
+            <div class="date"><?= date("M d, Y") ?></div>
+            <p>Laporan Transaksi</p>
+        </div>
         <table border="1" style="width: 100%;">
             <thead>
                 <tr>

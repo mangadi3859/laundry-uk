@@ -21,11 +21,20 @@
 #print-layer {
     position: fixed;
     width: 100dvw;
-    height: 100dvh;
+    /* min-height: 100dvh; */
     inset: 0;
     background-color: white;
     z-index: 1000;
     display: none;
+}
+
+.print-head {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+    border-bottom: 2px solid black;
 }
 
 @media print {
@@ -35,6 +44,11 @@
 
     #print-layer {
         display: block;
+        overflow-y: visible !important;
+    }
+
+    #print-layer table {
+        page-break-after: always;
     }
 
     /* body {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2024 at 01:48 PM
+-- Generation Time: Feb 24, 2024 at 02:52 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -38,9 +38,7 @@ CREATE TABLE `auth` (
 --
 
 INSERT INTO `auth` (`token`, `id_user`, `expires`) VALUES
-('1.JIBqcjBLunnxHBDx8wDMne7b', 1, '2024-02-01 11:27:52'),
-('1.LDllM6rKzOmqfiucpc8Cq5w5', 1, '2024-01-31 09:00:59'),
-('1.PbxsntPrBydAqyjvHkaiBuMh', 1, '2024-02-02 20:28:55');
+('1.B747vlHhwjzxP7do7Oc1Nylg', 1, '2024-02-23 10:57:35');
 
 -- --------------------------------------------------------
 
@@ -100,12 +98,12 @@ CREATE TABLE `tb_member` (
 --
 
 INSERT INTO `tb_member` (`id`, `nama`, `alamat`, `jenis_kelamin`, `tlp`, `token`) VALUES
-(6, 'Putri', 'Jln. Mawar', 'P', '62913356712', 'OtOHA'),
-(7, 'Gilang ', 'Jln Galang', 'L', '62913356712', 'brt2GvteHq'),
-(8, 'Roger', 'Jln. sambo', 'L', '628123213212', '1ofeImQEIB'),
-(9, 'Dayu', 'Jln lampung', 'P', '628123213212', 'hq0K5FMKB7'),
-(10, 'Reinhad', 'Jln Mawar', 'L', '6266666666', 'xrQBsx9qqC'),
-(11, 'James', 'jl James', 'L', '628123213212', 'Om4ujx0Oan');
+(6, 'putri', 'Jln. Mawar', 'P', '62913356712', 'OtOHA'),
+(7, 'gilang ', 'Jln Galang', 'L', '62913356712', 'brt2GvteHq'),
+(8, 'roger', 'Jln. sambo', 'L', '628123213212', '1ofeImQEIB'),
+(9, 'dayu', 'Jln lampung', 'P', '628123213212', 'hq0K5FMKB7'),
+(10, 'reinhad', 'Jln Mawar', 'L', '6266666666', 'xrQBsx9qqC'),
+(11, 'james', 'jl James', 'L', '628123213212', 'Om4ujx0Oan');
 
 -- --------------------------------------------------------
 
@@ -200,9 +198,9 @@ INSERT INTO `tb_transaksi` (`id`, `id_outlet`, `kode_invoice`, `id_member`, `tgl
 (12, 1, 'INV001-24ICNSRDP', 11, '2024-01-25 22:06:10', '2024-01-28 22:06:10', '2024-01-25 22:06:44', 0, 0, 0.075, 'proses', 'dibayar', 1),
 (13, 1, 'INV001-246B8J0RE', 11, '2024-01-25 22:07:08', '2024-01-28 22:07:08', NULL, 20000, 0.1, 0.075, 'baru', 'belum_dibayar', 1),
 (14, 4, 'INV004-24LPHFYMK', 9, '2024-01-30 08:59:06', '2024-02-02 08:59:06', NULL, 0, 0, 0.075, 'baru', 'belum_dibayar', 7),
-(15, 1, 'INV001-244E0IKE4', 11, '2024-01-30 22:03:33', '2024-02-02 22:03:33', '2024-01-30 22:03:39', 15000, 0.1, 0.075, 'proses', 'dibayar', 1),
-(17, 1, 'INV001-24UK1FFDS', 11, '2024-01-30 22:21:37', '2024-02-02 22:21:37', '2024-01-30 22:21:45', 10000, 0.1, 0.075, 'baru', 'dibayar', 1),
-(18, 1, 'INV001-24A0H48I5', 8, '2024-01-31 21:28:18', '2024-02-03 21:28:18', NULL, 10000, 0, 0.075, 'baru', 'belum_dibayar', 1);
+(15, 1, 'INV001-244E0IKE4', 11, '2024-01-30 22:03:33', '2024-02-02 22:03:33', '2024-01-30 22:03:39', 15000, 0.1, 0.075, 'diambil', 'dibayar', 1),
+(17, 1, 'INV001-24UK1FFDS', 11, '2024-01-30 22:21:37', '2024-02-02 22:21:37', '2024-01-30 22:21:45', 10000, 0.1, 0.075, 'selesai', 'dibayar', 1),
+(18, 1, 'INV001-24A0H48I5', 8, '2024-01-31 21:28:18', '2024-02-03 21:28:18', '2024-02-06 20:39:11', 10000, 0, 0.075, 'proses', 'dibayar', 1);
 
 -- --------------------------------------------------------
 
@@ -227,11 +225,11 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id`, `email`, `nama`, `username`, `password`, `id_outlet`, `role`) VALUES
 (1, 'wkomangadi44@gmail.com', 'Isla', 'totallynotisla', '$2y$10$LYKMUoEF5vO1qB9yqT6uYueonp1xCnFe9ltDN4EzWQ.Y9cZyg3O0K', 1, 'admin'),
 (2, 'pekalongan@gmail.co.id', 'Rihan Sirmawan', 'rihan123', '$2y$10$hHrGeS0R/Zcm/rE7YtorJO7VVWYhH/GSeEBLnrVv8in5W8d1l850i', 1, 'kasir'),
-(3, 'mangadirpl@gmail.com', 'Komang Adi Wirawan', 'adidi', '$2y$10$TAodk3fWdyVcuZGE0vVEaelNRiL51vXk/9DJMbR1foUOhuS65OEHG', 1, 'owner'),
+(3, 'mangadirpl@gmail.com', 'Komang Adi Wirawan', 'adidi', '$2y$10$i0UtnE.oFgGelNcq8rSVp.pmjmlUCh/jtx.Ku3/joJ1HVt88zBSpS', 1, 'owner'),
 (4, 'shigemoto@laundryina.com', 'Shigemoto Itsuki', 'shigemoto', '$2y$10$XsbaRbQtL2FHV5LEXaUDy.c4L1xDvvEJAvay8P0ok3arzwYsqmnta', 3, 'admin'),
 (5, 'andre@laundryina.com', 'James Andre', 'andre', '$2y$10$oEg32ixtHXaDXN6NeZq/ZOHP8FierlEsBLqhnXSixXLb7H.NO/Ja2', 3, 'kasir'),
 (6, 'charles@laundryina.com', 'Charles Kim', 'charles01', '$2y$10$mcxJTLsNY0bXKGCIos1Q0eRdVKQ1.jmFVW9VxUmJwjEpwRdWufLOS', 4, 'admin'),
-(7, 'ayunda@laundryina.com', 'Ayunda Mika', 'ayunda', '$2y$10$JHWkPJg66Aul5m0AfgMxGOLpByg2XpDXtOAbRnLPsybcUJO1xl6I6', 4, 'kasir');
+(7, 'ayunda@laundryina.com', 'Ayunda Mika', 'ayunda', '$2y$10$rru1Nf5pxsFTRMJTrNHO3eDcHtl9FgfomqtgjuwPzxEWtt8hZPqia', 4, 'kasir');
 
 --
 -- Indexes for dumped tables
@@ -295,7 +293,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_detail_transaksi`
 --
 ALTER TABLE `tb_detail_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tb_member`
@@ -319,7 +317,7 @@ ALTER TABLE `tb_paket`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_user`

@@ -72,60 +72,6 @@ $member = query($sql);
 <body>
     <?php include "../../components/sidebar.php" ?>
 
-    <div id="print-layer">
-        <div class="print-head">
-            <div style="font-size: 2rem;" class="brand">Laundry<span class="accent">Ina</span></div>
-            <div class="date"><?= date("M d, Y") ?></div>
-            <p>Laporan Transaksi</p>
-        </div>
-        <table border="1" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Invoice</th>
-                    <th>Outlet</th>
-                    <th>Member</th>
-                    <th>Tanggal Transaksi</th>
-                    <th>Batas Waktu</th>
-                    <th>Tanggal Bayar</th>
-                    <th>Status</th>
-                    <th>Pembayaran</th>
-                    <th>Kasir</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 0;
-                foreach ($transaksi as $k => $row) {
-                    $warning = array_pop($row);
-                    $idMember = array_pop($row);
-                    $idOutlet = array_pop($row);
-                    array_pop($row);
-
-                    $i++;
-                    $row["tgl"] = date("Y/m/d", strtotime($row["tgl"]));
-                    $row["tgl_bayar"] = date("Y/m/d", strtotime($row["tgl_bayar"]));
-                    $row["batas_waktu"] = date("Y/m/d", strtotime($row["batas_waktu"]));
-                    echo "<tr data-outlet='{$idOutlet}' data-member='{$idMember}' data-member-name='{$row['invoice']}'>";
-                    foreach ($row as $k => $data) {
-                        if ($k == "id") {
-                            echo "<td>$i</td>";
-                            continue;
-                        }
-
-                        if ($k == "tgl_bayar" && $row["dibayar"] != "dibayar") {
-                            echo "<td>-</td>";
-                            continue;
-                        } else
-                            echo "<td>$data</td>";
-                    }
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-
     <div class="main-container">
         <img class="banner" src="../../public/assets/transaksi-banner.jpg">
         <main id="main">
@@ -162,10 +108,6 @@ $member = query($sql);
                     <button type="submit" class="action-table-btn"><i class="fas fa-magnifying-glass"></i></button>
                 </form>
             </div>
-
-            <div class="action-table">
-                <a id="printBtn" class="action-table-btn btn-primary"><i class="fas fa-print"></i> Buat laporan</a>
-            </div>
             
             <div class="table-container">
                     <table>
@@ -175,12 +117,9 @@ $member = query($sql);
                                 <th>Invoice</th>
                                 <th>Outlet</th>
                                 <th>Member</th>
-                                <th>Tanggal Transaksi</th>
-                                <th>Batas Waktu</th>
                                 <th>Tanggal Bayar</th>
                                 <th>Status</th>
                                 <th>Pembayaran</th>
-                                <th>Kasir</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>

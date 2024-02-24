@@ -363,8 +363,6 @@ async function updateTable() {
                     <td><a ${warning && `data-warning='${row["batas_waktu"]}' onclick="handleWarningClick(this)"`} title='Batas waktu terlewat' class='${warning && `warning fa-triangle-exclamation fas`}'></a>${row.invoice}</td>
                     <td>${row.outlet}</td>
                     <td>${row.member}</td>
-                    <td>${tgl}</td>
-                    <td><a ${warning && `data-warning='${row["batas_waktu"]}' onclick="handleWarningClick(this)"`} title='Batas waktu terlewat' class='${warning && "warning fa-triangle-exclamation fas"}'></a> ${batasWaktu}</td>
                     <td>${row.dibayar == "dibayar" ? tglBayar : "-"}</td>
                     <td><div class='td-info'><span style='color: ${statusText}; background-color: ${statusBG}; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid ${statusBorder};'>${
                     row.status
@@ -372,7 +370,6 @@ async function updateTable() {
                     <td><div class='td-info'><span style='color: ${paymentText}; background-color: ${paymentBG}; padding: .25rem .5rem; border-radius: .25rem; border: 1px solid ${paymentBorder};'>${
                     row.dibayar
                 }</span> <button onclick="handleEditPembayaran(this)" data-info-value='${row.dibayar}' data-pembayaran-edit='${row.id}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>
-                <td>${row.kasir}</td>
                 <td class="tb-action">
                     <a href='view.php?id=${row["id"]}' title="VIEW DATA" class='action-btn btn-accent fa-eye fas'></a>
                     ${tbody.dataset.tableBody == "admin" ? `<a href='edit.php?id=${row["id"]}' title='EDIT DATA' class='action-btn btn-primary fas fa-gear'></a>` : ""}

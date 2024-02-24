@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2024 at 02:52 AM
+-- Generation Time: Feb 24, 2024 at 03:20 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -32,13 +32,6 @@ CREATE TABLE `auth` (
   `id_user` int(11) NOT NULL,
   `expires` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `auth`
---
-
-INSERT INTO `auth` (`token`, `id_user`, `expires`) VALUES
-('1.B747vlHhwjzxP7do7Oc1Nylg', 1, '2024-02-23 10:57:35');
 
 -- --------------------------------------------------------
 
@@ -225,7 +218,7 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id`, `email`, `nama`, `username`, `password`, `id_outlet`, `role`) VALUES
 (1, 'wkomangadi44@gmail.com', 'Isla', 'totallynotisla', '$2y$10$LYKMUoEF5vO1qB9yqT6uYueonp1xCnFe9ltDN4EzWQ.Y9cZyg3O0K', 1, 'admin'),
 (2, 'pekalongan@gmail.co.id', 'Rihan Sirmawan', 'rihan123', '$2y$10$hHrGeS0R/Zcm/rE7YtorJO7VVWYhH/GSeEBLnrVv8in5W8d1l850i', 1, 'kasir'),
-(3, 'mangadirpl@gmail.com', 'Komang Adi Wirawan', 'adidi', '$2y$10$i0UtnE.oFgGelNcq8rSVp.pmjmlUCh/jtx.Ku3/joJ1HVt88zBSpS', 1, 'owner'),
+(3, 'mangadirpl@gmail.com', 'Komang Adi Wirawan', 'adidi', '$2y$10$ic6IVTHLGqs5w/lDD0oOpuJnE6G5Gng6G/7FhEcvIzg97JfEJDUzO', 1, 'owner'),
 (4, 'shigemoto@laundryina.com', 'Shigemoto Itsuki', 'shigemoto', '$2y$10$XsbaRbQtL2FHV5LEXaUDy.c4L1xDvvEJAvay8P0ok3arzwYsqmnta', 3, 'admin'),
 (5, 'andre@laundryina.com', 'James Andre', 'andre', '$2y$10$oEg32ixtHXaDXN6NeZq/ZOHP8FierlEsBLqhnXSixXLb7H.NO/Ja2', 3, 'kasir'),
 (6, 'charles@laundryina.com', 'Charles Kim', 'charles01', '$2y$10$mcxJTLsNY0bXKGCIos1Q0eRdVKQ1.jmFVW9VxUmJwjEpwRdWufLOS', 4, 'admin'),

@@ -19,8 +19,8 @@ $_SAFE = true;
     <main id="main">
         <div class="login-container" style="flex-direction: column; align-items: start">
             <h1 style="font-size: var(--type-hero-lg)">Error <span style="color: var(--accent-600)">404</span></h1>
-            <p style="font-size: var(--type-lg)">Not Found</p>
-            
+            <p style="font-size: var(--type-lg)">Not Found</p>     
+            <p style="font-size: var(--type-base); margin-top: 1rem;">While trying to access <u style="color: var(--accent-600); font-weight: bold"><?= $_GET["r"] ?></u></p>
         </div>
     </main>
     

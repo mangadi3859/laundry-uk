@@ -1,0 +1,15 @@
+Admin:
+email: wkomangadi44@gmail.com
+username: totallynotisla
+password: kmzwa8awaa
+
+Kasir
+email: ayunda
+username: ayunda@laundryina.com
+password: kasir#1234
+
+Owner
+email: mangadirpl@gmail.com
+username: adidi
+password: laundry#1234
+

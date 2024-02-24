@@ -15,7 +15,7 @@ logoutButton.forEach((el) =>
         });
 
         if (logout.isConfirmed) {
-            window.location = e.target.dataset.logoutPath;
+            window.location = el.dataset.logoutPath;
         }
     })
 );

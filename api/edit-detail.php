@@ -27,6 +27,7 @@ if (!isPermited([Privilege::$ADMIN, Privilege::$KASIR])) {
 }
 
 $payload = json_decode(file_get_contents("php://input"), true);
+$idTransaksi = $payload["id"] ?? NULL;
 $idMember = $payload["member"] ?? NULL;
 $idOutlet = $payload["outlet"] ?? NULL;
 $items = $payload["items"] ?? NULL;
@@ -34,7 +35,7 @@ $extra = $payload["extra"] ?? NULL;
 $status = $payload["status"] ?? NULL;
 $payment = $payload["payment"] ?? NULL;
 
-if (!@$idMember || !@$idOutlet || !@$items) {
+if (!@$idTransaksi || !@$idMember || !@$idOutlet || !@$items) {
     exit(json_encode([
         "status" => "failed",
         "message" => "Data tidak lengkap"
@@ -75,34 +76,16 @@ $tgl_byr = $_payment == "dibayar" ? "CURRENT_TIMESTAMP" : "NULL";
 try {
     $conn->begin_transaction();
 
-    $invoice = "INV" . substr("000" . $idOutlet, -3) . "-" . date("y") . strtoupper(Auth::generateToken(7));
-    $sql = "INSERT INTO tb_transaksi VALUE (
-        '', 
-        '$idOutlet',    
-        '$invoice',
-        '$idMember',
-        CURRENT_TIMESTAMP,
-        CURRENT_TIMESTAMP + INTERVAL 3 DAY,
-        $tgl_byr,
-        '$extra',
-        '$diskon',
-        '$TAX',
-        '$_status',
-        '$_payment',
-        '{$_SESSION["auth"]->user["id"]}'
-    )
-    ";
+    $sql = "DELETE FROM tb_detail_transaksi WHERE id_transaksi = '$idTransaksi'";
     query($sql);
-    $idTransaksi = $conn->insert_id;
-
 
     foreach ($items as $k => $data) {
-        $sql = "INSERT INTO tb_detail_transaksi VALUE ('', '$idTransaksi', '{$data['id']}', '{$data['qty']}')";
+        $sql = "INSERT INTO tb_detail_transaksi VALUE ('', '$idTransaksi', '{$data['id_paket']}', '{$data['qty']}')";
         query($sql);
     }
 
     $conn->commit();
-    logger("INSERT TRANSAKSI", "({$_SESSION['auth']->user['nama']}) just created a new record");
+    logger("UPDATE DETAIL TRANSAKSI", "({$_SESSION['auth']->user['nama']}) just modified a record with id ($idTransaksi)");
     exit(json_encode([
         "status" => "ok",
     ]));

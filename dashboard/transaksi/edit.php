@@ -55,6 +55,7 @@ $users = query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,13 +71,14 @@ $users = query($sql);
     <script src="../../public/js/global.js" defer></script>
     <script src="../../public/js/transaksi-edit.js" defer></script>
 </head>
+
 <body>
     <?php include "../../components/sidebar.php" ?>
     <div class="main-container">
         <img class="banner" src="../../public/assets/paket-banner.jpg">
         <main id="main">
             <?php include "../../components/navbar.php" ?>
-            <form id="form" >
+            <form id="form">
                 <div class="head">Edit Data Transaksi</div>
                 <div class="form-content">
                     <div class="input-group">
@@ -105,16 +107,16 @@ $users = query($sql);
                         <label for="i-batas" class="label">Batas Tanggal Transaksi</label>
                         <input name="batas" value="<?= date("Y-m-d", strtotime($transaksi["batas_waktu"])) ?>" id="i-batas" class="input" type="date" placeholder="Batas Tanggal Transaksi" required />
                     </div>
-                    
+
                     <div class="input-group">
                         <label for="i-kasir" class="label">Kasir</label>
                         <select data-value="<?= $transaksi["id_user"] ?>" name="kasir" id="i-kasir" class="input" required>
-                        <option value="">--- Belum dipilih ---</option>
-                        <?php
-                        foreach ($users as $option) {
-                            echo "<option value='{$option['id']}'>{$option['nama']}</option>";
-                        }
-                        ?>
+                            <option value="">--- Belum dipilih ---</option>
+                            <?php
+                            foreach ($users as $option) {
+                                echo "<option value='{$option['id']}'>{$option['nama']}</option>";
+                            }
+                            ?>
                         </select>
                     </div>
 
@@ -126,9 +128,11 @@ $users = query($sql);
 
                 <div class="form-action">
                     <button class="link btn-primary" type="submit">Kirim</button>
+                    <a href="edit-detail.php?id=<?= $id ?>" class="link btn-primary edit">Edit Detail</a>
                 </div>
             </form>
         </main>
     </div>
 </body>
+
 </html>

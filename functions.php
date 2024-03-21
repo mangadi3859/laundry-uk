@@ -42,6 +42,8 @@ function getInitial(string $name): string
 
 function strCapitalize(string $str): string
 {
+    if (empty($str))
+        return "";
     return strtoupper($str[0]) . substr($str, 1);
 }
 

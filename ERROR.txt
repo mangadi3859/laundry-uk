@@ -339,3 +339,79 @@ WHERE id = '1'
     WHERE id_member = '11'
     
 
+[2024/03/20 07:56 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'JOIN tb_paket' at line 1
+
+[2024/03/20 07:56 AM] [SQL QUERY]: SELECT tb_detail_transaksi.id AS id, id_transaksi, qty, jenis, harga  FROM tb_detail_transaksi WHERE id_transaksi = '17' JOIN tb_paket
+
+[2024/03/20 11:39 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 11:39 AM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '21', '27', '7')
+
+[2024/03/20 11:39 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 11:39 AM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '22', '27', '7')
+
+[2024/03/20 11:54 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 11:54 AM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '×', '27', '5')
+
+[2024/03/20 11:56 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 11:56 AM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '×', '27', '10')
+
+[2024/03/20 11:59 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 11:59 AM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '×', '27', '10')
+
+[2024/03/20 11:59 AM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 11:59 AM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '×', '27', '10')
+
+[2024/03/20 12:00 PM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 12:00 PM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '17', '27', '10')
+
+[2024/03/20 12:00 PM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 12:00 PM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '17', '27', '10')
+
+[2024/03/20 12:19 PM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 12:19 PM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '14', '', '12')
+
+[2024/03/20 12:19 PM] [SQL ERROR]: Cannot add or update a child row: a foreign key constraint fails (`laundry`.`tb_detail_transaksi`, CONSTRAINT `FK_paket` FOREIGN KEY (`id_paket`) REFERENCES `tb_paket` (`id`))
+
+[2024/03/20 12:19 PM] [SQL QUERY]: INSERT INTO tb_detail_transaksi VALUE ('', '14', '', '12')
+
+[2024/03/21 10:58 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC' at line 3
+
+[2024/03/21 10:58 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan
+        FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id
+        WHERE MONTH(tgl) = MONTH(DATE_SUB(NOW(), INTERVAL 1 MONTH)) AND YEAR(tgl) = MONTH(DATE_SUB(NOW(), INTERVAL 1 MONTH)))
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+
+[2024/03/21 11:02 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC' at line 4
+
+[2024/03/21 11:02 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan
+        FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id
+        WHERE YEAR(tgl) = YEAR(CURRENT_DATE()
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+
+[2024/03/21 11:11 AM] [SQL ERROR]: Unknown column 'total_harga' in 'field list'
+
+[2024/03/21 11:11 AM] [SQL QUERY]: SELECT SUM(total_harga) FROM tb_detail_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket=tb_paket.id WHERE id_transaksi='1'
+
+[2024/03/21 11:42 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'BETWEEN '2024-03-21 00:00:00' AND '2024-03-22 23:59:59'
+        GROUP BY nam...' at line 3
+
+[2024/03/21 11:42 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan
+        FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id
+        WHERE BETWEEN '2024-03-21 00:00:00' AND '2024-03-22 23:59:59'
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+

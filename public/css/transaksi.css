@@ -65,3 +65,35 @@ tr:has(.warning) {
 /* #pagination {
     margin-top: auto;
 } */
+
+.print-table {
+    display: flex;
+    gap: 1rem;
+    /* flex-direction: column; */
+}
+
+.print-table form {
+    display: flex;
+    gap: 1rem;
+}
+
+.print-table select {
+    min-width: 10rem;
+}
+
+.print-table :where(button, a) {
+    font-size: 1.1rem;
+}
+
+.print-table .action-table-btn {
+    margin-right: auto;
+    width: auto;
+}
+
+/* .action-advance {
+    background-color: var(--primary-200);
+}
+
+.action-advance:hover {
+    background-color: var(--primary-400);
+} */

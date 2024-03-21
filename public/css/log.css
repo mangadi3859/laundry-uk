@@ -1,0 +1,11 @@
+main {
+    gap: 0.25rem;
+}
+
+.log-container {
+    margin-top: 1.5rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem 0 rgb(0 0 0 / 0.1);
+}

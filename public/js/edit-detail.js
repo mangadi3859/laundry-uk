@@ -1,0 +1,222 @@
+const paketBtn = document.querySelector("[data-input-paket]");
+const qtyBtn = document.querySelector("[data-input-qty]");
+const preview = document.querySelector("[data-preview]");
+const previewRow = document.querySelector("[data-preview-row]");
+const firstRow = document.querySelector("[data-first-row]");
+const tableDetail = document.querySelector("[data-table-detail]");
+const submitBtn = document.querySelector("[data-submit]");
+const extraBtn = document.querySelector("[data-input-tambahan]");
+const extraCol = document.querySelector("[data-col-extra]");
+const subTotalCol = document.querySelector("[data-col-subtotal]");
+const pajakCol = document.querySelector("[data-col-pajak]");
+const diskonCol = document.querySelector("[data-col-diskon]");
+const totalCol = document.querySelector("[data-col-total]");
+const idMember = document.querySelector("[data-member]").dataset.member;
+const idOutlet = document.querySelector("[data-outlet]").dataset.outlet;
+const payment = document.querySelector("[data-payment]").dataset.payment;
+const _status = document.querySelector("[data-status]").dataset.status;
+const detail = atob(document.querySelector("[data-detail64]").dataset.detail64);
+const idTransaksi = document.querySelector("[data-id-transaksi]").dataset.idTransaksi;
+
+const items = JSON.parse(detail);
+let cur;
+let extraPayment = parseInt(document.querySelector("[data-extra-fee]").dataset.extraFee);
+let paketInput = paketBtn.parentNode.querySelector("select");
+let qtyInput = qtyBtn.parentNode.querySelector("[data-input]");
+let extraInput = extraBtn.parentNode.querySelector("[data-input]");
+handleItems();
+
+paketBtn.addEventListener("click", async (e) => {
+    let outlet = paketInput.dataset.outlet;
+
+    if (items.some((e) => e.idTransaksi == paketInput.value)) {
+        return Swal.fire({
+            title: "Gagal",
+            text: "Paket tersebut sudah dimasukan.",
+            icon: "error",
+            footer: "Pencet tombol edit untuk mengubah data",
+            showCloseButton: true,
+            confirmButtonText: "Tutup",
+        });
+    }
+
+    let paket = await getPaket(paketInput.value, outlet);
+    if (paket.status != "ok") {
+        return Swal.fire({
+            title: "Gagal",
+            text: paket.message,
+            icon: "error",
+            showCloseButton: true,
+            confirmButtonText: "Tutup",
+        });
+    }
+
+    // console.log(paket.data);
+    paket.data.id_paket = paket.data.id;
+    cur = paket.data;
+    qtyBtn.parentNode.style.display = "";
+    preview.style.display = "";
+
+    handlePreview();
+});
+
+qtyBtn.addEventListener("click", (e) => {
+    if (!cur) return;
+    items.push({ ...cur, qty: parseInt(qtyInput.value) || 1 });
+    handleItems();
+
+    qtyBtn.parentNode.style.display = "none";
+    preview.style.display = "none";
+    paketInput.value = "";
+    qtyInput.value = "1";
+});
+
+qtyInput.addEventListener("input", handlePreview);
+
+extraBtn.addEventListener("click", () => {
+    extraPayment = parseInt(extraInput.value || 0);
+    extraInput.value = "";
+    handleItems();
+});
+
+//UTILS
+
+async function getPaket(id, outlet) {
+    return await (
+        await fetch("../../api/get-paket.php", {
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+            body: JSON.stringify({
+                id,
+                outlet,
+            }),
+        })
+    ).json();
+}
+
+function handlePreview() {
+    if (!cur) return;
+    let qty = parseInt(qtyInput.value) || 1;
+
+    previewRow.innerHTML = `
+    <tr>
+        <td>${cur.id}</td>
+        <td>${cur.nama_paket}</td>
+        <td>${cur.jenis}</td>
+        <td style="text-align: center;">${qty}</td>
+        <td>Rp. ${parseInt(cur.harga).toLocaleString()}</td>
+        <td>Rp. ${(parseInt(cur.harga) * qty).toLocaleString()}</td>
+    </tr>
+    `;
+}
+
+function handleItems() {
+    tableDetail.querySelectorAll("[data-detail]").forEach((e) => e.remove());
+
+    if (items.length > 0) {
+        submitBtn.parentElement.style.display = "";
+    } else submitBtn.parentElement.style.display = "none";
+
+    items.forEach((e, i) => {
+        let tr = document.createElement("tr");
+        let html = `
+        <td>${i + 1}</td>
+        <td>${e.nama_paket}</td>
+        <td style="text-align: center;">${e.qty}</td>
+        <td>Rp. ${parseInt(e.harga).toLocaleString()}</td>
+        <td>Rp. ${(parseInt(e.harga) * e.qty).toLocaleString()}</td>
+        <td class="tb-action">
+            <button onclick="handleDelete(this)" data-index="${i}" title="HAPUS DATA" class='action-btn btn-danger fas fa-trash'></button>
+            <button onclick="handleEdit(this)" data-index="${i}" data-action-edit="${i}" title="EDIT DATA" class='action-btn btn-primary fas fa-gear'></button>
+        </td>
+        `;
+
+        tr.dataset.detail = "";
+        tr.innerHTML = html;
+        tableDetail.insertBefore(tr, firstRow);
+    });
+
+    let subtotal = items.reduce((pre, now) => pre + now.qty * now.harga, 0);
+    let diskon = (subtotal + extraPayment) * parseFloat(diskonCol.dataset.colDiskon);
+    let pajak = (subtotal + extraPayment) * parseFloat(pajakCol.dataset.colPajak);
+    let total = subtotal + extraPayment - diskon + pajak;
+    subTotalCol.innerText = `Rp. ${diskon.toLocaleString()}`;
+    subTotalCol.innerText = `Rp. ${subtotal.toLocaleString()}`;
+    diskonCol.innerText = `Rp. ${diskon.toLocaleString()}`;
+    pajakCol.innerText = `Rp. ${pajak.toLocaleString()}`;
+    extraCol.innerText = `Rp. ${extraPayment.toLocaleString()}`;
+    totalCol.innerText = `Rp. ${total.toLocaleString()}`;
+}
+
+function handleDelete(element) {
+    if (!("index" in element.dataset)) return;
+    // delete items[parseInt(element.dataset.index)];
+    items.splice(parseInt(element.dataset.index), parseInt(element.dataset.index) + 1);
+    handleItems();
+}
+
+function handleEdit(element) {
+    if (!("index" in element.dataset)) return;
+    let old = items[parseInt(element.dataset.index)];
+    handleDelete(element);
+
+    cur = old;
+    handlePreview();
+    paketInput.value = cur.id;
+    qtyInput.value = cur.qty;
+
+    qtyBtn.parentNode.style.display = "";
+    preview.style.display = "";
+}
+
+submitBtn.addEventListener("click", async (e) => {
+    if (!items.length) {
+        return Swal.fire({
+            title: "Gagal",
+            text: "Tambah setidaknya 1 paket",
+            icon: "error",
+            showCloseButton: true,
+            confirmButtonText: "Tutup",
+        });
+    }
+
+    let res = await (
+        await fetch("../../api/edit-detail.php", {
+            method: "POST",
+            body: JSON.stringify({
+                outlet: idOutlet,
+                member: idMember,
+                id: idTransaksi,
+                items,
+                payment,
+                status: _status,
+                extra: extraPayment,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+    ).json();
+
+    if (res.status != "ok") {
+        return Swal.fire({
+            title: "Gagal",
+            text: res.message,
+            icon: "error",
+            showCloseButton: true,
+            confirmButtonText: "Ulang",
+        });
+    }
+
+    await Swal.fire({
+        title: "Selesai",
+        text: "Data ditambah",
+        icon: "success",
+        timer: 2000,
+        showCloseButton: true,
+        confirmButtonText: "OK",
+        timerProgressBar: true,
+    });
+
+    window.location = "../transaksi";
+});

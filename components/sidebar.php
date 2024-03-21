@@ -10,6 +10,7 @@ $_user = $isAuth ? $_SESSION["auth"]->user : NULL;
 $isAdmin = $isAuth && $_user["role"] == Privilege::$ADMIN;
 $isKasir = $isAuth && $_user["role"] == Privilege::$KASIR;
 $isOwner = $isAuth && $_user["role"] == Privilege::$OWNER;
+
 ?>
 
 <link rel="stylesheet" href="<?= $ROOT_PATH ?>/public/css/sidebar.css">
@@ -72,16 +73,16 @@ $isOwner = $isAuth && $_user["role"] == Privilege::$OWNER;
             <a class="$tab" href="$ROOT_PATH/dashboard/karyawan"><i class="fa-user-tie fas"></i> <span>Karyawan</span> <i class="angle fa fa-angle-right"></i></a>
             at;
         }
-        ?>        
+        ?>
     </div>
     <div class="logout">
-    <?php
-    if ($isAuth) {
-        echo <<<at
+        <?php
+        if ($isAuth) {
+            echo <<<at
                 <a data-logout-btn data-logout-path="$ROOT_PATH/logout.php"><span>Logout</span> <i style="margin-left: auto;" class="fa-right-from-bracket fas"></i></a>
             at;
-    }
-    ?>
+        }
+        ?>
     </div>
 </aside>
 <script src="<?= $ROOT_PATH ?>/public/js/sidebar.js" defer></script>

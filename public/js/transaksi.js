@@ -7,6 +7,7 @@ const deleleBtn = document.querySelectorAll("[data-action-delete]");
 const rows = document.querySelectorAll("tr[data-outlet]");
 const warnings = document.querySelectorAll("[data-warning]");
 const tbody = document.querySelector("[data-table-body]");
+const inputAdvance = document.querySelector("[data-input-advance]");
 let items = [];
 
 moment.tz.setDefault("Asia/Makassar");
@@ -383,3 +384,27 @@ async function updateTable() {
         },
     });
 }
+
+inputAdvance.addEventListener("click", async (e) => {
+    const { value: data } = await Swal.fire({
+        title: "Pilih periode",
+        html: `
+        <label for="start" style="display: block;">Dari</label>
+        <input style="margin-top: 0;" id="start" class="swal2-input" type="date" required>
+        <label for="end" style="display: block; margin-top: .5rem;">Sampai</label>
+        <input style="margin-top: 0;" id="end" class="swal2-input" type="date" required>
+        `,
+        focusConfirm: false,
+        preConfirm: () => {
+            return [document.getElementById("start").value, document.getElementById("end").value];
+        },
+    });
+    if (data[0] && data[1]) {
+        return window.open(`report.php?from=${data[0]}&final=${data[1]}`);
+    }
+
+    Swal.fire({
+        icon: "error",
+        text: "Input tidak valid",
+    });
+});

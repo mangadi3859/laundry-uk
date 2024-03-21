@@ -27,10 +27,11 @@ $isAdmin = $user["role"] == Privilege::$ADMIN;
 $isKasir = $user["role"] == Privilege::$KASIR;
 $isOwner = $user["role"] == Privilege::$OWNER;
 
-$avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg") ? "../public/tmp/av{$_SESSION["auth"]->user["id"]}.jpg" : "";
-?>    
+$avatarImgDashboard = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg") ? "data:image/jpeg;base64," . base64_encode(file_get_contents($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg")) : "";
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +47,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
     <script src="../public/js/global.js" defer></script>
     <script src="../public/js/dashboard.js" defer></script>
 </head>
+
 <body>
     <?php include "../components/sidebar.php" ?>
     <div class="main-container">
@@ -59,7 +61,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                 <div class="profile">
                     <div class="avatar">
                         <?= getInitial($_SESSION["auth"]->user["nama"]) ?>
-                        <img data-default="<?= $avatarImg ?>" data-avatar-img src="<?= $avatarImg ?>">
+                        <img loading="lazy" data-default="<?= $avatarImgDashboard ?>" data-avatar-img src="<?= $avatarImgDashboard ?>">
                         <label for="i-avatar"><span>Edit</span></label>
                         <input data-avatar-input hidden type="file" accept="image/jpeg  " id="i-avatar">
                     </div>
@@ -103,7 +105,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                             <div class="content-box">
                                 <div class="box-title">
                                     <div class="circle">
-                                        <i class="fa-boxes-stacked fas"></i> 
+                                        <i class="fa-boxes-stacked fas"></i>
                                     </div>
                                     <span>Proses</span>
                                 </div>
@@ -113,7 +115,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                             <div class="content-box">
                                 <div class="box-title">
                                     <div class="circle">
-                                        <i class="fa-layer-group fas"></i> 
+                                        <i class="fa-layer-group fas"></i>
                                     </div>
                                     <span>Baru</span>
                                 </div>
@@ -127,7 +129,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                             <div class="content-box">
                                 <div class="box-title">
                                     <div class="circle">
-                                        <i class="fa-location-dot fas"></i> 
+                                        <i class="fa-location-dot fas"></i>
                                     </div>
                                     <span>Outlet</span>
                                 </div>
@@ -137,7 +139,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                             <div class="content-box">
                                 <div class="box-title">
                                     <div class="circle">
-                                        <i class="fa-boxes-packing fas"></i> 
+                                        <i class="fa-boxes-packing fas"></i>
                                     </div>
                                     <span>Paket</span>
                                 </div>
@@ -147,7 +149,7 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                             <div class="content-box">
                                 <div class="box-title">
                                     <div class="circle">
-                                        <i class="fa-user fas"></i> 
+                                        <i class="fa-user fas"></i>
                                     </div>
                                     <span>Member</span>
                                 </div>
@@ -158,10 +160,16 @@ $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg"
                     <div <?= $isAdmin || $isKasir || $isOwner ? "" : "hidden" ?> class="actions">
                         <a href="transaksi">Lihat transaksi <i class="fas fa-arrow-up-right-from-square"></i></a>
                         <a href="transaksi?print">Buat laporan <i class="fas fa-print"></i></a>
+
+                        <?php if ($isAdmin) : ?>
+                            <a href="log.php">Logger <i class="fas fa-gear"></i></a>
+                            <a href="error.php">Error <i class="fas fa-xmark"></i></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 </body>
+
 </html>

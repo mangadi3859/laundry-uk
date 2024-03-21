@@ -7,6 +7,7 @@ internalOnly();
 
 $isAuth = Auth::isAuthenticated();
 
+
 ?>
 
 <link rel="stylesheet" href="<?= $ROOT_PATH ?>/public/css/navbar.css">
@@ -17,7 +18,7 @@ $isAuth = Auth::isAuthenticated();
         $nama = $_SESSION["auth"]->user["nama"];
         $role = $_SESSION["auth"]->user["role"];
         $initial = getInitial($nama);
-        $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg") ? "$ROOT_PATH/public/tmp/av{$_SESSION["auth"]->user["id"]}.jpg" : "";
+        $avatarImg = file_exists($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg") ? "data:image/jpeg;base64," . base64_encode(file_get_contents($AVATAR_PATH . "/av{$_SESSION["auth"]->user["id"]}.jpg")) : "";
 
         echo <<<at
         <div class="user">
@@ -32,7 +33,7 @@ $isAuth = Auth::isAuthenticated();
             </span>
             <div class="avatar">
                 $initial
-                <img onerror="this.onerror=null;this.remove()" src="$avatarImg">
+                <img loading="lazy" onerror="this.remove()" src="$avatarImg">
             </div>
         </div>
         at;

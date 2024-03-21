@@ -8,33 +8,36 @@ if (!Auth::isAuthenticated()) {
     exit(header("Location: $LOGIN_PATH"));
 }
 
-if ($_SERVER["REQUEST_METHOD"] != 'POST') {
+permitAccess([Privilege::$ADMIN, Privilege::$KASIR], "../");
+$_DASHBOARD = DashboardTab::$TRANSAKSI;
+
+$idTransaksi = $_GET["id"] ?? NULL;
+
+if (!@$idTransaksi) {
     exit(header("Location: ./"));
 }
 
-permitAccess([Privilege::$ADMIN, Privilege::$KASIR], "../");
-$_DASHBOARD = DashboardTab::$PENDAFTARAN;
+$sql = "SELECT * FROM tb_transaksi WHERE id = '$idTransaksi' LIMIT 1;";
+$transaksi = query($sql)[0];
 
-$idMember = $_POST["member"] ?? NULL;
-$idOutlet = @$_POST["outlet"] ? $_POST["outlet"] : $_SESSION["auth"]->user["id_outlet"];
-$status = @$_POST["status"] ? $_POST["status"] : "baru";
-$dibayar = @$_POST["dibayar"] ? $_POST["dibayar"] : "belum_dibayar";
-$time = date_create("now");
-$timeFormat = date("Y-m-d");
+$idMember = $transaksi["id_member"];
+$idOutlet = $transaksi["id_outlet"];
+$status = $transaksi["status"];
+$dibayar = $transaksi["dibayar"];
+$time = strtotime($transaksi["tgl"]);
+$timeFormat = date("Y-m-d", $time);
 
 if (!@$idMember) {
     exit(header("Location: ./?err=Data tidak lengkap"));
 }
 
-$sql = "SELECT id, nama FROM tb_member WHERE nama = '$idMember'";
+$sql = "SELECT id, nama FROM tb_member WHERE id = '$idMember'";
 $member = query($sql);
 
 
 if (empty($member)) {
     exit(header("Location: ./?err=Member tidak terdaftar"));
 }
-
-$idMember = $member[0]["id"];
 
 $sql = "SELECT id, nama FROM tb_outlet WHERE id = '$idOutlet'";
 $outlet = query($sql);
@@ -47,7 +50,19 @@ $sql = "SELECT * FROM tb_paket WHERE id_outlet = '$idOutlet'";
 $paket = query($sql);
 
 $sql = "SELECT COUNT(*) AS CT FROM tb_transaksi WHERE id_member = '$idMember' AND dibayar = 'dibayar'";
-$diskon = calculateDiscount((int) query($sql)[0]["CT"]);
+$diskon = $transaksi["diskon"];
+
+$extra = $transaksi["biaya_tambahan"];
+
+$sql = "SELECT tb_detail_transaksi.id AS id, id_transaksi, id_outlet, tb_paket.id AS id_paket, nama_paket, qty, jenis, harga FROM tb_detail_transaksi JOIN tb_paket ON tb_paket.id = tb_detail_transaksi.id_paket WHERE id_transaksi = '$idTransaksi'";
+$_detail = query($sql);
+
+foreach ($_detail as $i => $d) {
+    $_detail[$i]["qty"] = (int) $d["qty"];
+    $_detail[$i]["harga"] = (int) $d["harga"];
+}
+
+$detail = base64_encode(json_encode($_detail));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +70,7 @@ $diskon = calculateDiscount((int) query($sql)[0]["CT"]);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaundryIna - Pendaftaran</title>
+    <title>LaundryIna - Edit Detail</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../public/lib/fontawesome/css/all.min.css">
@@ -66,7 +81,7 @@ $diskon = calculateDiscount((int) query($sql)[0]["CT"]);
     <!-- JS -->
     <script src="../../public/lib/sweatalert/sweatalert.js" defer></script>
     <script src="../../public/js/global.js" defer></script>
-    <script src="../../public/js/pendaftaran-detail.js" defer></script>
+    <script src="../../public/js/edit-detail.js" defer></script>
 </head>
 
 <body>
@@ -88,7 +103,7 @@ $diskon = calculateDiscount((int) query($sql)[0]["CT"]);
 
             <div class="action-table">
                 <div class="group">
-                    <select data-input data-outlet='<?= $outlet[0]['id'] ?>' name="paket" id="i-paket" class="input input-action">
+                    <select data-input data-id-transaksi="<?= $idTransaksi ?>" data-outlet='<?= $outlet[0]['id'] ?>' name="paket" id="i-paket" class="input input-action">
                         <option value="">--- Pilih paket ---</option>
                         <?php
                         foreach ($paket as $option) {
@@ -145,7 +160,7 @@ $diskon = calculateDiscount((int) query($sql)[0]["CT"]);
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody data-table-detail data-member="<?= $idMember ?>" data-outlet="<?= $idOutlet ?>" data-status="<?= $status ?>" data-payment="<?= $dibayar ?>">
+                    <tbody data-table-detail data-extra-fee="<?= $extra ?>" data-id-transaksi="<?= $idTransaksi ?>" data-member="<?= $idMember ?>" data-outlet="<?= $idOutlet ?>" data-status="<?= $status ?>" data-payment="<?= $dibayar ?>" data-detail64="<?= $detail ?>">
 
                         <tr data-first-row style="border-top: 2px solid black;">
                             <td></td>

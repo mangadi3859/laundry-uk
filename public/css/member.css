@@ -95,3 +95,10 @@
 .form-action button {
     width: 100%;
 }
+
+.edit {
+    margin-top: 0.5rem;
+    width: 100% !important;
+    display: block;
+    text-align: center;
+}

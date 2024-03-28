@@ -415,3 +415,45 @@ WHERE id = '1'
         GROUP BY nama_paket
         ORDER BY jumlah_penggunaan DESC
 
+[2024/03/29 06:41 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC' at line 4
+
+[2024/03/29 06:41 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan
+        FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id
+        WHERE 
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+
+[2024/03/29 06:47 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND tb_outlet.id='4'
+        GROUP BY nama_paket
+        ORDER BY jumlah_pe...' at line 1
+
+[2024/03/29 06:47 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id INNER JOIN tb_outlet ON tb_transaksi.id_outlet = tb_outlet.id WHERE tgl BETWEEN  AND tb_outlet.id='4'
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+
+[2024/03/29 06:48 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND tb_outlet.id='4'
+        GROUP BY nama_paket
+        ORDER BY jumlah_pe...' at line 1
+
+[2024/03/29 06:48 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id INNER JOIN tb_outlet ON tb_transaksi.id_outlet = tb_outlet.id WHERE  AND tb_outlet.id='4'
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+
+[2024/03/29 06:48 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND tb_outlet.id='4'
+        GROUP BY nama_paket
+        ORDER BY jumlah_pe...' at line 1
+
+[2024/03/29 06:48 AM] [SQL QUERY]: SELECT nama_paket, COUNT(nama_paket) AS jumlah_penggunaan FROM tb_transaksi INNER JOIN tb_detail_transaksi ON tb_transaksi.id = tb_detail_transaksi.id_transaksi INNER JOIN tb_paket ON tb_detail_transaksi.id_paket = tb_paket.id INNER JOIN tb_outlet ON tb_transaksi.id_outlet = tb_outlet.id WHERE  AND tb_outlet.id='4'
+        GROUP BY nama_paket
+        ORDER BY jumlah_penggunaan DESC
+
+[2024/03/29 06:49 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'dibayar='dibayar' AND tb_outlet.id='4' GROUP BY kode_invoice' at line 6
+
+[2024/03/29 06:49 AM] [SQL QUERY]: SELECT *, tb_outlet.id AS id_outlet_tb_outlet, tb_outlet.nama AS nama_outlet, tb_transaksi.id AS id_transaksi, tb_member.nama AS nama_member FROM tb_detail_transaksi
+                    INNER JOIN tb_transaksi ON tb_detail_transaksi.id_transaksi=tb_transaksi.id
+                    INNER JOIN tb_member ON tb_transaksi.id_member=tb_member.id
+                    INNER JOIN tb_paket ON tb_detail_transaksi.id_paket=tb_paket.id
+                    INNER JOIN tb_outlet ON tb_transaksi.id_outlet=tb_outlet.id
+                    INNER JOIN tb_user ON tb_transaksi.id_user=tb_user.id WHERE TRUE dibayar='dibayar' AND tb_outlet.id='4' GROUP BY kode_invoice
+

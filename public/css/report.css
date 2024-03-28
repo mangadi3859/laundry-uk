@@ -56,10 +56,6 @@ body {
 }
 
 @media print {
-    @page {
-        size: landscape;
-    }
-
     #print-layer {
         display: block;
         overflow-y: visible !important;

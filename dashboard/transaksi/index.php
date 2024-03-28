@@ -114,7 +114,7 @@ $member = query($sql);
             <div class="print-table">
                 <form action="report.php" target="_blank" method="GET">
                     <select name="simple" id="i-simple" class="input input-action">
-                        <option value="">Semua</option>
+                        <option value="semua" selected>Semua</option>
                         <option value="bulan">Bulan ini</option>
                         <option value="bulan_lalu">Bulan lalu</option>
                         <option value="tahun">Tahun ini</option>

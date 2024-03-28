@@ -305,3 +305,33 @@
 [2024/03/21 11:02 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
 [2024/03/21 11:11 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
 [2024/03/21 11:42 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/03/21 11:44 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/21 08:17 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/21 09:23 PM] [UPDATE DETAIL TRANSAKSI]: (Isla) just modified a record with id (20)
+[2024/03/21 09:24 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/03/21 09:24 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (23)
+[2024/03/21 09:24 PM] [UPDATE TRANSAKSI]: (Isla) just modified payment status (belum_dibayar => dibayar) with id (20)
+[2024/03/21 09:41 PM] [DELETE TRANSAKSI]: (Isla) just deleted a record with the id (1)
+[2024/03/27 02:58 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/27 04:34 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/27 04:34 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/28 02:50 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/28 03:02 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/28 03:03 PM] [UPDATE AVATAR]: (Isla) just modified their avatar
+[2024/03/28 03:04 PM] [UPDATE AVATAR]: (Isla) just modified their avatar
+[2024/03/28 03:04 PM] [UPDATE AVATAR]: (Isla) just modified their avatar
+[2024/03/28 03:04 PM] [UPDATE AVATAR]: (Isla) just modified their avatar
+[2024/03/28 03:11 PM] [UPDATE AVATAR]: (Isla) just modified their avatar
+[2024/03/28 03:11 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/28 03:12 PM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/03/29 05:09 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/03/29 05:10 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/29 06:41 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/03/29 06:47 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/29 06:47 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/03/29 06:47 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/03/29 06:48 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/03/29 06:48 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/03/29 06:49 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/03/29 06:52 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/03/29 06:52 AM] [LOGIN]: Someone logged in as (Isla)

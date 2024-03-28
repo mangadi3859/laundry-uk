@@ -18,12 +18,12 @@ if (!Auth::isAuthenticated()) {
     ]));
 }
 
-// if (!isPermited([Privilege::$ADMIN, Privilege::$KASIR, Privilege::$OWNER])) {
-//     http_response_code(403);
-//     exit(json_encode([
-//         "message" => "Forbidden"
-//     ]));
-// }
+if (!isPermited([Privilege::$ADMIN])) {
+    http_response_code(403);
+    exit(json_encode([
+        "message" => "Forbidden"
+    ]));
+}
 
 $payload = json_decode(file_get_contents("php://input"), true);
 $id = $payload["id"] ?? NULL;

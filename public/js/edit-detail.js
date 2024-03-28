@@ -210,7 +210,7 @@ submitBtn.addEventListener("click", async (e) => {
 
     await Swal.fire({
         title: "Selesai",
-        text: "Data ditambah",
+        text: "Data diubah",
         icon: "success",
         timer: 2000,
         showCloseButton: true,

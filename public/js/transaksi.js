@@ -373,8 +373,8 @@ async function updateTable() {
                 }</span> <button onclick="handleEditPembayaran(this)" data-info-value='${row.dibayar}' data-pembayaran-edit='${row.id}' class='status-edit-btn fa fa-pen-to-square'></button></div></td>
                 <td class="tb-action">
                     <a href='view.php?id=${row["id"]}' title="VIEW DATA" class='action-btn btn-accent fa-eye fas'></a>
-                    ${tbody.dataset.tableBody == "admin" ? `<a href='edit.php?id=${row["id"]}' title='EDIT DATA' class='action-btn btn-primary fas fa-gear'></a>` : ""}
-                    <a onclick="handleDeleteBtn(this)" data-action-delete="${row["id"]}" title="HAPUS DATA" class='action-btn btn-danger fas fa-trash'></a>
+                    <a href='${tbody.dataset.tableBody == "admin" ? `edit.php?id=${row["id"]}` : `edit-detail.php?id=${row["id"]}`}' title='EDIT DATA' class='action-btn btn-primary fas fa-gear'></a>
+                    ${tbody.dataset.tableBody == "admin" ? `<a onclick="handleDeleteBtn(this)" data-action-delete="${row["id"]}" title="HAPUS DATA" class='action-btn btn-danger fas fa-trash'></a>` : ""}
                 </td>
                 `;
                 html += `</tr>`;

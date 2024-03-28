@@ -8,7 +8,7 @@ if (!Auth::isAuthenticated()) {
     exit(header("Location: $LOGIN_PATH"));
 }
 
-permitAccess([Privilege::$ADMIN, Privilege::$KASIR], "../");
+permitAccess([Privilege::$ADMIN, Privilege::$KASIR], "./");
 $_DASHBOARD = DashboardTab::$TRANSAKSI;
 
 $idTransaksi = $_GET["id"] ?? NULL;

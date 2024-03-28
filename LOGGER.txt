@@ -335,3 +335,10 @@
 [2024/03/29 06:49 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
 [2024/03/29 06:52 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
 [2024/03/29 06:52 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/29 07:15 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/29 07:15 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/03/29 07:40 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/03/29 07:41 AM] [LOGIN]: Someone logged in as (Isla)
+[2024/03/29 07:41 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/03/29 07:47 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/03/29 07:48 AM] [UPDATE DETAIL TRANSAKSI]: (Ayunda Mika) just modified a record with id (23)

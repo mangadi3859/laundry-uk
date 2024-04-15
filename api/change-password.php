@@ -19,8 +19,15 @@ if (!Auth::isAuthenticated()) {
 }
 
 $payload = json_decode(file_get_contents("php://input"), true);
-$oldPw = $payload["old_pw"];
-$password = $payload["password"];
+$oldPw = $payload["old_pw"] ?? NULL;
+$password = $payload["password"] ?? NULL;
+
+
+if (!@$password) {
+    exit(json_encode([
+        "status" => "failed",
+    ]));
+}
 
 if (!password_verify($oldPw, $_SESSION["auth"]->user["password"])) {
     exit(json_encode([

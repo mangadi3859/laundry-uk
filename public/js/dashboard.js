@@ -67,6 +67,7 @@ resetBtn.addEventListener("click", async () => {
         footer: "Kamu akan logout secara otomatis",
     });
 
+    if (!pw.isConfirmed) return;
     let resetPas = await (
         await fetch("../api/change-password.php", {
             method: "POST",

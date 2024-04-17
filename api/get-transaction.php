@@ -24,6 +24,7 @@ if (!isPermited([Privilege::$ADMIN, Privilege::$KASIR, Privilege::$OWNER])) {
     ]));
 }
 
+$sqlAll = isPermited([Privilege::$KASIR]) ? "WHERE tb_transaksi.id_outlet = '{$_SESSION['auth']->user["id_outlet"]}'" : "";
 $sql = "SELECT tb_transaksi.id AS id, 
 tb_transaksi.kode_invoice AS invoice, 
 tb_outlet.nama AS outlet, 
@@ -45,6 +46,7 @@ FROM tb_transaksi
 JOIN tb_user ON tb_user.id = tb_transaksi.id_user
 JOIN tb_member ON tb_member.id = tb_transaksi.id_member
 JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
+$sqlAll
 ORDER BY tb_transaksi.id DESC
 ";
 

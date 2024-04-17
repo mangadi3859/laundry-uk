@@ -11,29 +11,8 @@ if (!Auth::isAuthenticated()) {
 permitAccess([Privilege::$ADMIN, Privilege::$KASIR, Privilege::$OWNER], "../");
 $_DASHBOARD = DashboardTab::$TRANSAKSI;
 
-$sql = "SELECT tb_transaksi.id AS id, 
-tb_transaksi.kode_invoice AS invoice, 
-tb_outlet.nama AS outlet, 
-tb_member.nama AS member, 
-tb_transaksi.tgl AS tgl, 
-tb_transaksi.batas_waktu AS batas_waktu,
-tb_transaksi.tgl_bayar AS tgl_bayar,
-tb_transaksi.status AS status,
-tb_transaksi.dibayar AS dibayar,
-tb_user.nama AS kasir,
-tb_member.nama AS member_name,
-tb_transaksi.id_outlet AS id_outlet,
-tb_transaksi.id_member AS id_member,
-CASE
-    WHEN tb_transaksi.batas_waktu <= CURRENT_TIMESTAMP AND tb_transaksi.dibayar != 'dibayar' THEN 1
-    ELSE 0
-END AS warning
-FROM tb_transaksi
-JOIN tb_user ON tb_user.id = tb_transaksi.id_user
-JOIN tb_member ON tb_member.id = tb_transaksi.id_member
-JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
-ORDER BY tb_transaksi.id DESC
-";
+$sqlAll = isPermited([Privilege::$KASIR]) ? "WHERE tb_transaksi.id_outlet = '{$_SESSION['auth']->user["id_outlet"]}'" : "";
+$sql = "SELECT id FROM tb_transaksi $sqlAll ORDER BY tb_transaksi.id DESC";
 
 $transaksi = query($sql);
 
@@ -88,13 +67,16 @@ $member = query($sql);
 
                     echo <<<jw
                         <a href="../pendaftaran" class="action-table-btn"><i class="fas fa-plus"></i> Tambah transaksi</a>
-                        <select name="outlet" id="i-outlet" class="input input-action" data-filter-outlet>
-                            <option value="">--- Pilih outlet ---</option>
-                            $options
-                        </select>
                         jw;
                 }
                 ?>
+
+                <?php if (!isPermited([Privilege::$KASIR])) : ?>
+                    <select name="outlet" id="i-outlet" class="input input-action" data-filter-outlet>
+                        <option value="">--- Pilih outlet ---</option>
+                        $options
+                    </select>
+                <?php endif; ?>
 
                 <select name="member" id="i-member" class="input input-action" data-filter-member>
                     <option value="">--- Pilih member ---</option>

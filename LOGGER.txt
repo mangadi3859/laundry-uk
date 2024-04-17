@@ -382,3 +382,18 @@
 [2024/04/15 03:11 PM] [UPDATE USER]: (Shigemoto Itsuki) just modified a record with id (1)
 [2024/04/15 03:11 PM] [LOGOUT]: Someone logged out from (Shigemoto Itsuki)
 [2024/04/15 03:12 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/04/15 05:27 PM] [LOGOUT]: Someone logged out from (Isla)
+[2024/04/15 05:27 PM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/04/15 05:32 PM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/04/15 05:32 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/04/15 05:42 PM] [INSERT TRANSAKSI]: (Isla) just created a new record
+[2024/04/17 02:08 PM] [LOGIN]: Someone logged in as (Isla)
+[2024/04/18 07:22 AM] [LOGOUT]: Someone logged out from (Isla)
+[2024/04/18 07:23 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/04/18 07:27 AM] [SQL ERROR]: An error has occur, see ERROR LOG to see the detail
+[2024/04/18 07:34 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/04/18 07:35 AM] [LOGIN]: Someone logged in as (Komang Adi Wirawan)
+[2024/04/18 07:40 AM] [LOGOUT]: Someone logged out from (Komang Adi Wirawan)
+[2024/04/18 07:40 AM] [LOGIN]: Someone logged in as (Ayunda Mika)
+[2024/04/18 07:40 AM] [LOGOUT]: Someone logged out from (Ayunda Mika)
+[2024/04/18 07:40 AM] [LOGIN]: Someone logged in as (Isla)

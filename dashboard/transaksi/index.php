@@ -60,10 +60,7 @@ $member = query($sql);
             <div class="action-table">
                 <?php
                 if (isPermited([Privilege::$ADMIN, Privilege::$KASIR])) {
-                    $options = "";
-                    foreach ($outlet as $option) {
-                        $options .= "<option value='{$option['id']}'>{$option['nama']}</option>";
-                    }
+
 
                     echo <<<jw
                         <a href="../pendaftaran" class="action-table-btn"><i class="fas fa-plus"></i> Tambah transaksi</a>
@@ -72,9 +69,15 @@ $member = query($sql);
                 ?>
 
                 <?php if (!isPermited([Privilege::$KASIR])) : ?>
+                    <?php
+                    $options = "";
+                    foreach ($outlet as $option) {
+                        $options .= "<option value='{$option['id']}'>{$option['nama']}</option>";
+                    }
+                    ?>
                     <select name="outlet" id="i-outlet" class="input input-action" data-filter-outlet>
                         <option value="">--- Pilih outlet ---</option>
-                        $options
+                        <?= $options ?>
                     </select>
                 <?php endif; ?>
 

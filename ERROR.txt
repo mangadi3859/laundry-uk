@@ -483,3 +483,11 @@ JOIN tb_outlet ON tb_outlet.id = tb_transaksi.id_outlet
 ORDER BY tb_transaksi.id DESC
 WHERE tb_transaksi.id_outlet = '4'
 
+[2024/04/25 11:38 AM] [SQL ERROR]: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 3' at line 5
+
+[2024/04/25 11:38 AM] [SQL QUERY]: SELECT 
+SUM(CASE WHEN tb_transaksi.status = 'proses' THEN 1 ELSE 0 END) AS proses,
+SUM(CASE WHEN tb_transaksi.status = 'baru' THEN 1 ELSE 0 END) AS baru,
+SUM(CASE WHEN tb_transaksi.status = 'selesai' THEN 1 ELSE 0 END) AS selesai
+FROM tb_transaksi WHERE tb_transaksi.id_outlet == 3;
+

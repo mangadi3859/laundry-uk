@@ -12,7 +12,6 @@ function internalOnly()
 
 internalOnly();
 
-
 function logger(string $name, string $message): void
 {
     global $LOGGER_PATH;
@@ -52,7 +51,6 @@ function permitAccess(array $roles, string $redirect)
 {
     if (!in_array($_SESSION["auth"]->user["role"], $roles))
         exit(header("Location: $redirect"));
-
 }
 
 function isPermited(array $roles): bool

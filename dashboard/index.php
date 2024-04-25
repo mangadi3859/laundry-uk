@@ -8,12 +8,13 @@ if (!Auth::isAuthenticated()) {
     exit(header("Location: $LOGIN_PATH"));
 }
 
+$visibility = $_SESSION["auth"]->user["role"] == "kasir" ? "WHERE tb_transaksi.id_outlet = '{$_SESSION["auth"]->user["id_outlet"]}'" : "";
 $userOutlet = query("SELECT nama, id FROM tb_outlet WHERE id = {$_SESSION["auth"]->user["id_outlet"]}");
 $laundrySql = "SELECT 
 SUM(CASE WHEN tb_transaksi.status = 'proses' THEN 1 ELSE 0 END) AS proses,
 SUM(CASE WHEN tb_transaksi.status = 'baru' THEN 1 ELSE 0 END) AS baru,
 SUM(CASE WHEN tb_transaksi.status = 'selesai' THEN 1 ELSE 0 END) AS selesai
-FROM tb_transaksi;";
+FROM tb_transaksi $visibility;";
 $laundry = query($laundrySql)[0];
 
 $dbOutlet = query("SELECT COUNT(*) AS CT FROM tb_outlet")[0];

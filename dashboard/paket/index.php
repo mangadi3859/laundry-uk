@@ -38,6 +38,7 @@ $idOutlet = query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +55,7 @@ $idOutlet = query($sql);
     <script src="../../public/js/global.js" defer></script>
     <script src="../../public/js/paket.js" defer></script>
 </head>
+
 <body>
     <?php include "../../components/sidebar.php" ?>
     <div class="main-container">
@@ -72,44 +74,45 @@ $idOutlet = query($sql);
                 </select>
             </div>
             <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nama Paket</th>
-                                <th>Jenis</th>
-                                <th>Outlet</th>
-                                <th>Harga</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($paket as $k => $row) {
-                                $idOutlet = array_pop($row);
-                                $isUsed = array_pop($row);
-                                $delBtn = $isUsed ? "" : "<a data-paket='{$row['nama_paket']}' data-action-delete='{$row['id']}' title='HAPUS DATA' class='action-btn btn-danger'>DELETE</a>";
-                                echo "<tr data-outlet='{$idOutlet}'>";
-                                foreach ($row as $k => $data) {
-                                    if ($k == "harga") {
-                                        $formated = number_format($data, 0, ".", ",");
-                                        echo "<td>Rp. $formated</td>";
-                                    } else
-                                        echo "<td>$data</td>";
-                                }
-                                echo <<<action
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nama Paket</th>
+                            <th>Jenis</th>
+                            <th>Outlet</th>
+                            <th>Harga</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($paket as $k => $row) {
+                            $idOutlet = array_pop($row);
+                            $isUsed = array_pop($row);
+                            $delBtn = $isUsed ? "" : "<a data-paket='{$row['nama_paket']}' data-action-delete='{$row['id']}' title='HAPUS DATA' class='action-btn btn-danger'>DELETE</a>";
+                            echo "<tr data-outlet='{$idOutlet}'>";
+                            foreach ($row as $k => $data) {
+                                if ($k == "harga") {
+                                    $formated = number_format($data, 0, ".", ",");
+                                    echo "<td>Rp. $formated</td>";
+                                } else
+                                    echo "<td>$data</td>";
+                            }
+                            echo <<<action
                                 <td class="tb-action">
                                     $delBtn
                                     <a href='edit.php?id={$row['id']}' title="EDIT DATA" class='action-btn btn-primary'>EDIT</a>
                                 </td>
                                 action;
-                                echo "</tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
 </body>
+
 </html>

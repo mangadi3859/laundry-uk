@@ -36,13 +36,14 @@ if (!@$id) {
 }
 
 $sql = "SELECT 
-CASE 
+SUM(CASE 
     WHEN tb_detail_transaksi.id IS NOT NULL THEN 1
     ELSE 0
-END AS is_used
+END) AS is_used
 FROM 
 tb_paket
 LEFT JOIN tb_detail_transaksi ON tb_detail_transaksi.id_paket = tb_paket.id
+WHERE tb_paket.id = '$id'
 GROUP BY 
 tb_paket.id";
 
